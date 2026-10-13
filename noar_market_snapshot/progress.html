@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NOAR download</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --concrete: #dfe7ea;
+      --ink: #1a2332;
+      --muted: #5c6b7a;
+      --paper: #f4f7f8;
+      --track: #c3ced4;
+      --fill: #1f6f62;
+      --warn: #a15c28;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      background: var(--concrete);
+      color: var(--ink);
+      font-family: Barlow, sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 48px 28px 64px;
+    }
+    h1 {
+      margin: 0 0 28px;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      letter-spacing: 0.01em;
+      line-height: 1;
+    }
+    .meter {
+      background: var(--paper);
+      padding: 18px 18px 16px;
+      border: 1px solid #b7c4cb;
+    }
+    .track {
+      height: 36px;
+      background: var(--track);
+      position: relative;
+    }
+    .fill {
+      height: 100%;
+      width: 0%;
+      background: var(--fill);
+      transition: width 0.4s linear;
+    }
+    .readout {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .pct {
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 600;
+      font-size: 42px;
+      line-height: 1;
+    }
+    .current {
+      margin: 22px 0 0;
+      font-size: 22px;
+    }
+    .facts {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+    .note {
+      margin: 22px 0 0;
+      min-height: 1.45em;
+    }
+    .note.warn { color: var(--warn); }
+    @media (prefers-reduced-motion: reduce) {
+      .fill { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>NOAR market snapshot</h1>
+    <div class="meter">
+      <div class="track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar">
+        <div class="fill" id="fill"></div>
+      </div>
+      <div class="readout">
+        <div class="pct" id="pct">0%</div>
+        <div id="count">Waiting for the download</div>
+      </div>
+    </div>
+    <p class="current" id="current"></p>
+    <p class="facts" id="facts"></p>
+    <p class="note" id="note"></p>
+  </main>
+  <script>
+    function hours(seconds) {
+      if (seconds == null) return "estimating time left";
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      if (h > 0) return h + " h " + m + " min left";
+      return m + " min left";
+    }
+    async function tick() {
+      try {
+        const res = await fetch("noar_status.json?t=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) return;
+        const s = await res.json();
+        const pct = s.percent || 0;
+        document.getElementById("fill").style.width = pct + "%";
+        document.getElementById("bar").setAttribute("aria-valuenow", String(pct));
+        document.getElementById("pct").textContent = pct.toFixed(1) + "%";
+        document.getElementById("count").textContent =
+          (s.done || 0).toLocaleString() + " of " + (s.total || 0).toLocaleString();
+        document.getElementById("current").textContent = s.current || s.range || "";
+        const rows = (s.csv_rows || 0).toLocaleString();
+        const timeLeft = s.state === "complete" ? "finished" : hours(s.eta_seconds);
+        document.getElementById("facts").textContent = rows + " rows saved · " + timeLeft;
+        const note = document.getElementById("note");
+        note.textContent = s.message || "";
+        note.className = s.state === "stopped" ? "note warn" : "note";
+        document.title = pct.toFixed(1) + "% · NOAR download";
+      } catch (e) {}
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
+</body>
+</html>

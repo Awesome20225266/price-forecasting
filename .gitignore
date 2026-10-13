@@ -1,0 +1,56 @@
+# ---------------------------------------------------------------------------
+# SECRETS - never commit
+# ---------------------------------------------------------------------------
+# WBES live login tokens (written by wbes_pipeline/wbes_pull.py after OTP login)
+wbes_session.json
+*_session.json
+.env
+.env.*
+
+# ---------------------------------------------------------------------------
+# Python environments and caches (each person builds their own with setup_windows.bat)
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# ---------------------------------------------------------------------------
+# Logs
+# ---------------------------------------------------------------------------
+logs/
+*.log
+
+# ---------------------------------------------------------------------------
+# Downloaded market data and resume state (rebuilt by each pipeline's backfill)
+# ---------------------------------------------------------------------------
+HPX_Downloader/HPX_Data/
+iex_pipeline/data/
+wbes_pipeline/data/
+wbes_pipeline/wbes_ns_data/
+wbes_pipeline/wbes_px_data/
+noar_market_snapshot/noar_market_snapshot.csv
+noar_market_snapshot/noar_market_snapshot.xlsx
+noar_market_snapshot/noar_progress.txt
+noar_market_snapshot/noar_status.json
+pxil_tam_gtam/PXIL_TAM_GTAM*.xlsx
+pxil_tam_gtam/*.sqlite
+
+# Safety net: no data files anywhere in the repo
+*.db
+*.sqlite
+*.sqlite3
+*.xlsx
+*.xls
+*.csv
+*.parquet
+*.zip
+
+# ---------------------------------------------------------------------------
+# Office lock files and OS clutter
+# ---------------------------------------------------------------------------
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,7 @@
+# Store text files with LF in the repo; Git converts them for each person's machine.
+* text=auto
+
+# Windows scripts must keep CRLF line endings, or labels/goto in .bat files can break.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
