@@ -30,6 +30,7 @@ iex_pipeline/data/
 wbes_pipeline/data/
 wbes_pipeline/wbes_ns_data/
 wbes_pipeline/wbes_px_data/
+wbes_pipeline/reports/
 noar_market_snapshot/noar_market_snapshot.csv
 noar_market_snapshot/noar_market_snapshot.xlsx
 noar_market_snapshot/noar_progress.txt
@@ -46,6 +47,8 @@ pxil_tam_gtam/*.sqlite
 *.csv
 *.parquet
 *.zip
+# ...except the hand-maintained plant list (technology, nameplate MW, public sources; no schedule data)
+!wbes_pipeline/plant_master.csv
 
 # ---------------------------------------------------------------------------
 # Office lock files and OS clutter

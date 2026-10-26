@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AS Schedule Dashboard</title>
+<style>
+:root{
+  --bg:#f6f6f4; --surface:#ffffff; --ink:#1c1d1f; --ink2:#55585e; --ink3:#868990;
+  --border:#e3e3e0; --grid:#ededeb; --axis:#c4c4c0; --hover:rgba(20,20,30,.045); --hl:rgba(20,20,30,.06);
+  --up:#2a78d6; --down:#eb6834; --focus:#2a78d6; --btn:#f1f1ef; --warn:#8a5a00; --neutral:#8a9099;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121316; --surface:#1b1d21; --ink:#ebebec; --ink2:#a9adb3; --ink3:#7d8188;
+    --border:#2d3036; --grid:#26292e; --axis:#42464d; --hover:rgba(255,255,255,.045); --hl:rgba(255,255,255,.07);
+    --up:#3987e5; --down:#d95926; --focus:#3987e5; --btn:#25282d; --warn:#e0b25c; --neutral:#7c828b;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:1320px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:0 0 2px;font-weight:650;letter-spacing:-.01em}
+h2{font-size:15px;margin:0;font-weight:600}
+.sub{color:var(--ink2);font-size:13px}
+.note{color:var(--ink2);font-size:12.5px;margin-top:4px}
+.muted{color:var(--ink3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;min-width:0}
+.filters{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:flex-end;margin:14px 0 10px}
+@media (min-width:900px){.filters{position:sticky;top:0;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.04)}#secDay{scroll-margin-top:140px}}
+.fld{display:flex;flex-direction:column;gap:3px;flex:1 1 140px;min-width:0}
+.fld.wide{flex:2 1 220px}
+.fld>span{font-size:12px;color:var(--ink2);font-weight:500}
+input,select,button{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:6px 8px;min-height:34px;width:100%;min-width:0}
+button{width:auto;background:var(--btn);cursor:pointer;padding:6px 14px;font-weight:500}
+button:hover{border-color:var(--axis)}
+input:focus,select:focus,button:focus-visible,th:focus-visible,tr:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.hint{font-size:12px;color:var(--warn);min-height:0}
+.selline{font-size:13px;color:var(--ink2);margin:0 0 10px}
+.selline b{color:var(--ink);font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.kpi{padding:10px 12px}
+.kpi .lab{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:6px}
+.kpi .val{font-size:20px;font-weight:650;font-variant-numeric:tabular-nums;margin-top:2px;letter-spacing:-.01em;overflow-wrap:anywhere}
+.kpi .val small{font-size:12px;font-weight:500;color:var(--ink2)}
+.kpi .s2{font-size:12px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;flex:none}
+.sw.u{background:var(--up)} .sw.d{background:var(--down)}
+.grid2{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}
+@media (min-width:1000px){.grid2{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--axis);text-underline-offset:2px}
+a:hover{text-decoration-color:var(--ink)}
+.mb{margin-bottom:12px}
+.chead{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:6px 12px;margin-bottom:8px}
+.chead .desc{font-size:12.5px;color:var(--ink2);margin-top:2px}
+.legend{display:flex;gap:14px;font-size:12.5px;color:var(--ink2);align-items:center;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.chart{width:100%;min-width:0;position:relative}
+.chart svg{display:block;width:100%;height:auto;touch-action:pan-y}
+svg text{font:11px system-ui,-apple-system,"Segoe UI",Arial,sans-serif;fill:var(--ink3)}
+svg .tv{fill:var(--ink);font-size:12px;font-variant-numeric:tabular-nums}
+svg .tl{fill:var(--ink2);font-size:12px;font-weight:600}
+svg .te{fill:var(--ink3);font-size:13px}
+.gl{stroke:var(--grid);stroke-width:1}
+.ax{stroke:var(--axis);stroke-width:1}
+.bu{fill:var(--up)} .bd{fill:var(--down)}
+.lu,.ld{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.lu{stroke:var(--up)} .ld{stroke:var(--down)}
+.cu,.cd{stroke:var(--surface);stroke-width:2}
+.cu{fill:var(--up)} .cd{fill:var(--down)}
+.hit{fill:transparent;cursor:crosshair}
+.hl{fill:var(--hl)}
+.cx{stroke:var(--ink3);stroke-width:1;stroke-dasharray:3 3}
+#tip{position:fixed;z-index:50;display:none;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-size:12.5px;box-shadow:0 6px 18px rgba(0,0,0,.14);max-width:min(340px,calc(100vw - 16px))}
+#tip .tt{font-weight:600;margin-bottom:4px}
+#tip table{border-collapse:collapse;font-size:12.5px}
+#tip td{padding:1px 0 1px 8px;white-space:nowrap;border:0;font-variant-numeric:tabular-nums}
+#tip td:first-child{padding-left:0}
+#tip td.n{text-align:right}
+.tbl-wrap{overflow:auto;max-height:620px;border:1px solid var(--border);border-radius:8px;-webkit-overflow-scrolling:touch}
+table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+table.t th,table.t td{padding:6px 10px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border)}
+table.t th{position:sticky;top:0;z-index:1;background:var(--surface);font-weight:600;color:var(--ink2);font-size:12.5px;vertical-align:bottom}
+table.t th.sortable{cursor:pointer;user-select:none}
+table.t th.sortable:hover{color:var(--ink)}
+table.t th .ar{display:inline-block;width:10px;margin-left:3px;color:var(--ink)}
+table.t .num{text-align:right;font-variant-numeric:tabular-nums}
+table.t tbody tr:hover{background:var(--hover)}
+table.t tr.click{cursor:pointer}
+table.t td.slots{white-space:normal;min-width:190px;max-width:380px;font-size:12.5px;font-variant-numeric:tabular-nums}
+table.t tfoot td{font-weight:600;position:sticky;bottom:0;background:var(--surface);border-top:1px solid var(--axis)}
+table.t td.pl{font-weight:550}
+table.t td.barc{min-width:170px;width:45%;white-space:normal}
+.dbar{position:relative;height:12px;margin:2px 0}
+.dbar .z{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--axis)}
+.dbar .b{position:absolute;top:0;height:12px;background:var(--neutral);border-radius:1.5px}
+table.t tfoot .dbar .b{background:var(--ink2)}
+h2 .dmeta{display:block;font-size:12.5px;font-weight:500;color:var(--ink2);margin-top:2px}
+.row-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px;font-size:12.5px;color:var(--ink2)}
+.hidden{display:none !important}
+footer{font-size:12px;color:var(--ink3);margin:16px 0 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AS Schedule Dashboard</h1>
+    <div class="sub" id="subtitle"></div>
+    <div class="note">Energy in MWh (1 MU = 1,000 MWh). AS Up = extra injection, AS Down = backing down. VAE pool rows excluded.</div>
+    <div class="note">Technology: from each plant's own WBES schedule shape (solar = no output at night; BESS = charges midday, discharges evening; hybrid parts = WBES codes ending _HS/_HW) and plant names. Max scheduled MW = highest MW scheduled in the period, not nameplate.</div>
+    <div class="note" id="noteMix">Schedule types: ISGS, URS, OA_GNA, OA_TGNA, OA_PX, OA_REMC, AS, SCED, SCUC and Total, from the same WBES Net Schedule files.</div>
+  </header>
+
+  <div class="card filters" role="search">
+    <label class="fld"><span>From date</span><input type="date" id="fFrom"></label>
+    <label class="fld"><span>To date</span><input type="date" id="fTo"></label>
+    <label class="fld"><span>Region</span><select id="fRegion"></select></label>
+    <label class="fld"><span>Plant type</span><select id="fType"></select></label>
+    <label class="fld"><span>Technology</span><select id="fTech"></select></label>
+    <label class="fld wide"><span>Plant</span><input id="fPlant" list="plantList" placeholder="All plants (type to search)" autocomplete="off" spellcheck="false"><span class="hint" id="plantHint"></span></label>
+    <button type="button" id="btnReset">Reset</button>
+  </div>
+  <datalist id="plantList"></datalist>
+
+  <div class="selline" id="selline"></div>
+  <div class="kpis" id="kpis"></div>
+
+  <section class="card mb">
+    <div class="chead">
+      <div><h2>Hourly profile</h2><div class="desc" id="descA"></div></div>
+      <div class="legend"><span><i class="sw u"></i>AS Up</span><span><i class="sw d"></i>AS Down</span><button type="button" id="btnTblA">Show as table</button></div>
+    </div>
+    <div class="chart" id="chA"></div>
+    <div class="tbl-wrap hidden" id="tblA"></div>
+  </section>
+
+  <div class="grid2">
+    <section class="card">
+      <div class="chead">
+        <div><h2>Time band split</h2><div class="desc">MWh and share of each series, by time band</div></div>
+        <div class="legend"><span><i class="sw u"></i>AS Up</span><span><i class="sw d"></i>AS Down</span></div>
+      </div>
+      <div class="chart" id="chB"></div>
+    </section>
+    <section class="card">
+      <div class="chead">
+        <div><h2>AS by technology</h2><div class="desc">MWh and share of each series, by plant technology</div></div>
+        <div class="legend"><span><i class="sw u"></i>AS Up</span><span><i class="sw d"></i>AS Down</span><button type="button" id="btnTblT">Show as table</button></div>
+      </div>
+      <div class="chart" id="chT"></div>
+      <div class="tbl-wrap hidden" id="tblT"></div>
+    </section>
+  </div>
+
+  <section class="card mb hidden" id="secMix">
+    <div class="chead">
+      <div><h2>Whole schedule of the selected plants (by schedule type)</h2><div class="desc">+ = into the grid, − = drawn from the grid. AS here is net (Up − Down). Includes days without AS.</div></div>
+    </div>
+    <div class="tbl-wrap" id="tblMix"></div>
+  </section>
+
+  <section class="card mb">
+    <div class="chead">
+      <div><h2>Daily trend</h2><div class="desc">MWh scheduled per day</div></div>
+      <div class="legend"><span><i class="sw u"></i>AS Up</span><span><i class="sw d"></i>AS Down</span></div>
+    </div>
+    <div class="chart" id="chC"></div>
+  </section>
+
+  <section class="card mb">
+    <div class="chead">
+      <div><h2>Plant ranking</h2><div class="desc">Ranked by gross AS (Up + Down) in the selection. Click a column to sort; click a row to see that plant day by day.</div></div>
+    </div>
+    <div class="tbl-wrap" id="tblRank"></div>
+    <div class="row-actions"><button type="button" id="btnAll">Show all</button><span id="rankInfo"></span></div>
+  </section>
+
+  <section class="card mb hidden" id="secDay">
+    <div class="chead">
+      <div><h2 id="dayTitle">Plant by day</h2><div class="desc">Time slots = the 15-minute blocks in which AS was scheduled that day (for example 14:15-15:45 means 14:15 to 15:45). Days without AS are not listed.<span id="dayMixNote"> Schedule-type columns = that day's whole schedule in MWh (+ into the grid, − drawn from the grid; AS there is net Up − Down); blank = no schedule row that day.</span></div></div>
+      <button type="button" id="btnClearPlant">Clear plant</button>
+    </div>
+    <div class="tbl-wrap" id="tblDay"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const DATA = __AS_DATA__;
+(function () {
+  'use strict';
+  // <agg> ---------------------------------------------------------------- data prep + aggregation (pure, no DOM)
+  const M = DATA.meta, DATES = DATA.dates, PL = DATA.plants, REC = DATA.rec, TYP = DATA.types;
+  const BANDS = M.bands, NB = BANDS.length;
+  const NR = REC.length, NP = PL.length, ND = DATES.length;
+  const hourBand = new Int8Array(24).fill(-1);
+  BANDS.forEach(function (b, i) { b[1].forEach(function (h) { hourBand[h] = i; }); });
+  const rD = new Int32Array(NR), rP = new Int32Array(NR), rU = new Float64Array(NR), rN = new Float64Array(NR);
+  for (let i = 0; i < NR; i++) {
+    const r = REC[i]; rD[i] = r[0]; rP[i] = r[1];
+    let s = 0; const a = r[2]; for (let j = 1; j < a.length; j += 2) s += a[j]; rU[i] = s;
+    s = 0; const b = r[3]; for (let j = 1; j < b.length; j += 2) s += b[j]; rN[i] = s;
+  }
+  const pRegion = PL.map(function (p) { return p[1]; });
+  const pType = Int32Array.from(PL.map(function (p) { return p[2]; }));
+  // technology: DATA.techs + plants[i][3]; older data without techs -> one "Unknown" technology
+  const TECH = Array.isArray(DATA.techs) ? DATA.techs.slice() : [];
+  let unknownTech = -1;
+  function techUnknown() { if (unknownTech < 0) { unknownTech = TECH.indexOf('Unknown'); if (unknownTech < 0) { TECH.push('Unknown'); unknownTech = TECH.length - 1; } } return unknownTech; }
+  const pTech = Int32Array.from(PL.map(function (p) { const t = p[3]; return (Number.isInteger(t) && t >= 0 && t < TECH.length) ? t : techUnknown(); }));
+  const NT = TECH.length;
+  function numOrNull(v) { return (typeof v === 'number' && isFinite(v)) ? v : null; }
+  const pMaxMW = PL.map(function (p) { return numOrNull(p[4]); });
+  const pNameMW = PL.map(function (p) { return numOrNull(p[5]); });
+  const pCapUrl = PL.map(function (p) { const u = p[6]; return (typeof u === 'string' && /^https?:\/\//i.test(u)) ? u : null; });
+
+  // whole schedule by schedule type (optional): DATA.stypes + DATA.mix rows [dateIdx, plantIdx, v0..vN-1]; + = into grid
+  const STY = Array.isArray(DATA.stypes) ? DATA.stypes : [];
+  const MIX = Array.isArray(DATA.mix) ? DATA.mix : [];
+  const HAS_MIX = STY.length > 0 && MIX.length > 0;
+  const NS = HAS_MIX ? STY.length : 0;
+  const totIdx = STY.indexOf('Total');
+  function mixTotal(m) { if (totIdx >= 0) return m[2 + totIdx] || 0; let s = 0; for (let k = 0; k < NS; k++) s += m[2 + k] || 0; return s; }
+  const mixByKey = new Map();
+  if (HAS_MIX) for (let i = 0; i < MIX.length; i++) mixByKey.set(MIX[i][0] * NP + MIX[i][1], i);
+
+  // st: {fi, ti (date indexes, inclusive), region ('' = all), type (-1 = all), tech (-1 = all), plant (-1 = all)}
+  function aggregate(st) {
+    const fi = st.fi, ti = st.ti, region = st.region, type = st.type, plant = st.plant, tech = st.tech == null ? -1 : st.tech;
+    const hU = new Float64Array(24), hD = new Float64Array(24);
+    const dU = new Float64Array(ND), dD = new Float64Array(ND);
+    const pU = new Float64Array(NP), pD = new Float64Array(NP), pDays = new Int32Array(NP);
+    const pPU = new Float64Array(NP), pPD = new Float64Array(NP);
+    const pBU = new Float64Array(NP * NB), pBD = new Float64Array(NP * NB);
+    const tcU = new Float64Array(NT), tcD = new Float64Array(NT), tcPlants = new Int32Array(NT);
+    let tU = 0, tD = 0, plantDays = 0;
+    const rows = [];
+    for (let i = 0; i < NR; i++) {
+      const d = rD[i]; if (d < fi || d > ti) continue;
+      const p = rP[i];
+      if (plant >= 0 && p !== plant) continue;
+      if (region && pRegion[p] !== region) continue;
+      if (type >= 0 && pType[p] !== type) continue;
+      if (tech >= 0 && pTech[p] !== tech) continue;
+      const r = REC[i], u = rU[i], dn = rN[i];
+      tU += u; tD += dn; dU[d] += u; dD[d] += dn; pU[p] += u; pD[p] += dn;
+      tcU[pTech[p]] += u; tcD[pTech[p]] += dn;
+      if (u + dn > 0) { pDays[p]++; plantDays++; }
+      if (r[6] > pPU[p]) pPU[p] = r[6];
+      if (r[7] > pPD[p]) pPD[p] = r[7];
+      const a = r[2];
+      for (let j = 0; j < a.length; j += 2) { const h = a[j], v = a[j + 1]; hU[h] += v; const b = hourBand[h]; if (b >= 0) pBU[p * NB + b] += v; }
+      const c = r[3];
+      for (let j = 0; j < c.length; j += 2) { const h = c[j], v = c[j + 1]; hD[h] += v; const b = hourBand[h]; if (b >= 0) pBD[p * NB + b] += v; }
+      if (plant >= 0) rows.push(i);
+    }
+    const bU = new Float64Array(NB), bD = new Float64Array(NB);
+    for (let h = 0; h < 24; h++) { const b = hourBand[h]; if (b >= 0) { bU[b] += hU[h]; bD[b] += hD[h]; } }
+    let plants = 0;
+    for (let p = 0; p < NP; p++) if (pDays[p] > 0) { plants++; tcPlants[pTech[p]]++; }
+    const mixT = new Float64Array(NS), pTot = new Float64Array(NP);
+    for (let i = 0; i < (HAS_MIX ? MIX.length : 0); i++) {
+      const m = MIX[i], d = m[0]; if (d < fi || d > ti) continue;
+      const p = m[1];
+      if (plant >= 0 && p !== plant) continue;
+      if (region && pRegion[p] !== region) continue;
+      if (type >= 0 && pType[p] !== type) continue;
+      if (tech >= 0 && pTech[p] !== tech) continue;
+      for (let k = 0; k < NS; k++) mixT[k] += m[2 + k] || 0;
+      pTot[p] += mixTotal(m);
+    }
+    return { tU: tU, tD: tD, plantDays: plantDays, plants: plants, days: Math.max(0, ti - fi + 1),
+      hU: hU, hD: hD, dU: dU, dD: dD, bU: bU, bD: bD, tcU: tcU, tcD: tcD, tcPlants: tcPlants, mixT: mixT, pTot: pTot,
+      pU: pU, pD: pD, pDays: pDays, pPU: pPU, pPD: pPD, pBU: pBU, pBD: pBD, rows: rows };
+  }
+  // </agg> ---------------------------------------------------------------
+
+  // ---------------------------------------------------------------- formatting
+  const nf1 = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const nf2 = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const nf0 = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+  const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function f1(v) { return nf1.format(Math.abs(v) < 0.05 ? 0 : v); }
+  function fMU(v) { return nf2.format(v / 1000); }
+  function fInt(v) { return nf0.format(v); }
+  function fPct(v) { return isFinite(v) ? nf1.format(Math.abs(v) < 0.05 ? 0 : v) + '%' : '–'; }
+  function pct(a, b) { return b > 0 ? a / b * 100 : NaN; }
+  function dDisp(s) { return s.slice(8, 10) + '-' + MON[+s.slice(5, 7) - 1] + '-' + s.slice(0, 4); }
+  function dShort(s) { return (+s.slice(8, 10)) + ' ' + MON[+s.slice(5, 7) - 1]; }
+  function hh(h) { return (h < 10 ? '0' : '') + h; }
+  function slotName(h) { return hh(h) + ':00-' + hh(h + 1) + ':00'; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function abbr(v) {
+    const a = Math.abs(v);
+    function t(x) { return String(+x.toFixed(2)); }
+    if (a >= 1e6) return t(v / 1e6) + 'M';
+    if (a >= 1e3) return t(v / 1e3) + 'k';
+    return t(v);
+  }
+  function niceTicks(max, n) {
+    if (!(max > 0)) return { max: 1, ticks: [0, 1] };
+    const raw = max / n, mag = Math.pow(10, Math.floor(Math.log10(raw))), r = raw / mag;
+    const step = (r <= 1 ? 1 : r <= 2 ? 2 : r <= 2.5 ? 2.5 : r <= 5 ? 5 : 10) * mag;
+    const top = Math.ceil(max / step - 1e-9) * step, ticks = [];
+    for (let v = 0; v <= top + step * 1e-6; v += step) ticks.push(+v.toPrecision(12));
+    return { max: top, ticks: ticks };
+  }
+  function arrMax(a, lo, hi) { let m = 0; for (let i = lo; i <= hi; i++) if (a[i] > m) m = a[i]; return m; }
+  function calDays(a, b) { return Math.round((Date.UTC(+b.slice(0, 4), +b.slice(5, 7) - 1, +b.slice(8, 10)) - Date.UTC(+a.slice(0, 4), +a.slice(5, 7) - 1, +a.slice(8, 10))) / 864e5) + 1; }
+
+  // ---------------------------------------------------------------- DOM + state
+  function $(id) { return document.getElementById(id); }
+  const fFrom = $('fFrom'), fTo = $('fTo'), fRegion = $('fRegion'), fType = $('fType'), fTech = $('fTech'), fPlant = $('fPlant');
+  const tip = $('tip');
+  const nameIdx = new Map();
+  PL.forEach(function (p, i) { nameIdx.set(String(p[0]).toUpperCase(), i); });
+  const st = { fi: 0, ti: ND - 1, region: '', type: -1, tech: -1, plant: -1 };
+  const ui = { tableA: false, tableT: false, rankAll: false, rankSort: { k: 'gross', dir: -1 }, daySort: { k: 'date', dir: 1 } };
+  let A = null;
+
+  $('subtitle').textContent = dDisp(M.from) + ' to ' + dDisp(M.to) + '  ·  ' + M.days + ' days  ·  source folder: ' + M.source +
+    ' (' + M.files + ' files)  ·  generated ' + M.generated;
+  $('foot').textContent = DATA.plants.length + ' plants, ' + fInt(NR) + ' plant-days in file. Hour slot hh = hh:00 to hh+1:00. Avg MW = MWh in the slot ÷ days in range. Bands: ' +
+    BANDS.map(function (b) { return b[0]; }).join(', ') + '.';
+
+  fFrom.min = fTo.min = M.from; fFrom.max = fTo.max = M.to;
+  fRegion.innerHTML = '<option value="">All regions</option>' + DATA.regions.map(function (r) { return '<option>' + esc(r) + '</option>'; }).join('');
+  fType.innerHTML = '<option value="-1">All types</option>' + TYP.map(function (t, i) { return '<option value="' + i + '">' + esc(t) + '</option>'; }).join('');
+  fTech.innerHTML = '<option value="-1">All technologies</option>' + TECH.map(function (t, i) { return '<option value="' + i + '">' + esc(t) + '</option>'; }).join('');
+  $('plantList').innerHTML = PL.map(function (p, i) { return '<option value="' + esc(p[0]) + '">' + esc(p[1] + ' · ' + TYP[p[2]] + ' · ' + TECH[pTech[i]]) + '</option>'; }).join('');
+
+  function syncInputs() {
+    fFrom.value = DATES[st.fi] || M.from; fTo.value = DATES[st.ti] || M.to;
+    fRegion.value = st.region; fType.value = String(st.type); fTech.value = String(st.tech);
+    fPlant.value = st.plant >= 0 ? PL[st.plant][0] : '';
+    $('plantHint').textContent = '';
+  }
+  function idxGE(s) { for (let i = 0; i < ND; i++) if (DATES[i] >= s) return i; return ND; }
+  function idxLE(s) { for (let i = ND - 1; i >= 0; i--) if (DATES[i] <= s) return i; return -1; }
+  function onDate(e) {
+    let a = fFrom.value || M.from, b = fTo.value || M.to;
+    if (a < M.from) a = M.from; if (a > M.to) a = M.to;
+    if (b < M.from) b = M.from; if (b > M.to) b = M.to;
+    if (a > b) { if (e && e.target === fTo) a = b; else b = a; }
+    fFrom.value = a; fTo.value = b;
+    st.fi = idxGE(a); st.ti = idxLE(b);
+    update();
+  }
+  fFrom.addEventListener('change', onDate); fTo.addEventListener('change', onDate);
+  function plantFits(p) { return (!st.region || pRegion[p] === st.region) && (st.type < 0 || pType[p] === st.type) && (st.tech < 0 || pTech[p] === st.tech); }
+  fTech.addEventListener('change', function () { st.tech = +fTech.value; if (st.plant >= 0 && !plantFits(st.plant)) { st.plant = -1; fPlant.value = ''; } update(); });
+  fRegion.addEventListener('change', function () { st.region = fRegion.value; if (st.plant >= 0 && !plantFits(st.plant)) { st.plant = -1; fPlant.value = ''; } update(); });
+  fType.addEventListener('change', function () { st.type = +fType.value; if (st.plant >= 0 && !plantFits(st.plant)) { st.plant = -1; fPlant.value = ''; } update(); });
+  function setPlant(p) {
+    if (p === st.plant) return;
+    st.plant = p;
+    if (p >= 0) { st.region = ''; st.type = -1; st.tech = -1; ui.daySort = { k: 'date', dir: 1 }; }
+    syncInputs(); update();
+  }
+  function applyPlantInput(commit) {
+    const v = fPlant.value.trim(), V = v.toUpperCase();
+    if (!v || V === 'ALL') { $('plantHint').textContent = ''; setPlant(-1); return; }
+    if (nameIdx.has(V)) { $('plantHint').textContent = ''; setPlant(nameIdx.get(V)); return; }
+    if (commit) $('plantHint').textContent = 'No plant with that name. Pick one from the list.';
+  }
+  fPlant.addEventListener('input', function () { applyPlantInput(false); });
+  fPlant.addEventListener('change', function () { applyPlantInput(true); });
+  $('btnReset').addEventListener('click', function () {
+    st.fi = 0; st.ti = ND - 1; st.region = ''; st.type = -1; st.tech = -1; st.plant = -1;
+    ui.rankAll = false; ui.rankSort = { k: 'gross', dir: -1 };
+    syncInputs(); update();
+  });
+  $('btnClearPlant').addEventListener('click', function () { setPlant(-1); });
+  $('btnTblA').addEventListener('click', function () {
+    ui.tableA = !ui.tableA;
+    $('btnTblA').textContent = ui.tableA ? 'Show as chart' : 'Show as table';
+    $('chA').classList.toggle('hidden', ui.tableA); $('tblA').classList.toggle('hidden', !ui.tableA);
+    renderHourly();
+  });
+  $('btnAll').addEventListener('click', function () { ui.rankAll = !ui.rankAll; renderRank(); });
+
+  // ---------------------------------------------------------------- tooltip
+  function showTip(html, x, y) {
+    tip.innerHTML = html; tip.style.display = 'block';
+    const r = tip.getBoundingClientRect(), vw = window.innerWidth, vh = window.innerHeight;
+    let left = x + 14, top = y + 14;
+    if (left + r.width > vw - 8) left = x - r.width - 14;
+    if (left < 8) left = 8;
+    if (top + r.height > vh - 8) top = y - r.height - 14;
+    if (top < 8) top = 8;
+    tip.style.left = left + 'px'; tip.style.top = top + 'px';
+  }
+  function hideTip() { tip.style.display = 'none'; }
+  function tipRow(cls, label, val, extra) {
+    return '<tr><td><i class="sw ' + cls + '"></i></td><td>' + label + '</td><td class="n">' + val + '</td>' + (extra != null ? '<td class="n">' + extra + '</td>' : '') + '</tr>';
+  }
+
+  // ---------------------------------------------------------------- Chart A: hourly profile
+  function chartWidth(el) { return Math.max(280, Math.floor(el.clientWidth || el.parentNode.clientWidth || 600)); }
+  let geoA = null;
+  function renderHourly() {
+    const days = A.days;
+    $('descA').textContent = 'MWh per hour slot (hh:00 to hh+1:00), summed over the ' + days + ' day' + (days === 1 ? '' : 's') + ' in range';
+    if (ui.tableA) { renderHourlyTable(); return; }
+    const host = $('chA'), W = chartWidth(host), H = W < 520 ? 220 : 280;
+    const ml = 44, mr = 6, mt = 10, mb = 26, pw = W - ml - mr, ph = H - mt - mb;
+    const mx = Math.max(arrMax(A.hU, 0, 23), arrMax(A.hD, 0, 23)), T = niceTicks(mx, W < 520 ? 4 : 5);
+    function y(v) { return mt + ph - v / T.max * ph; }
+    const sw = pw / 24, gIn = 2, gOut = Math.max(3, sw * 0.26);
+    const bw = Math.max(1, Math.min(16, (sw - gOut - gIn) / 2));
+    let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Hourly AS Up and Down MWh">';
+    T.ticks.forEach(function (t) { const yy = y(t).toFixed(1); s += '<line class="gl" x1="' + ml + '" x2="' + (W - mr) + '" y1="' + yy + '" y2="' + yy + '"/><text x="' + (ml - 6) + '" y="' + (+yy + 3.5) + '" text-anchor="end">' + abbr(t) + '</text>'; });
+    s += '<rect id="hlA" class="hl" x="0" y="' + mt + '" width="' + sw.toFixed(2) + '" height="' + ph + '" visibility="hidden"/>';
+    const step = sw < 17 ? 3 : sw < 30 ? 2 : 1;
+    for (let h = 0; h < 24; h++) {
+      const x0 = ml + h * sw + (sw - (2 * bw + gIn)) / 2;
+      const u = A.hU[h], d = A.hD[h];
+      if (u > 0) { const yy = y(u); s += '<rect class="bu" x="' + x0.toFixed(2) + '" y="' + yy.toFixed(2) + '" width="' + bw.toFixed(2) + '" height="' + Math.max(0.5, mt + ph - yy).toFixed(2) + '"/>'; }
+      if (d > 0) { const yy = y(d); s += '<rect class="bd" x="' + (x0 + bw + gIn).toFixed(2) + '" y="' + yy.toFixed(2) + '" width="' + bw.toFixed(2) + '" height="' + Math.max(0.5, mt + ph - yy).toFixed(2) + '"/>'; }
+      if (h % step === 0) s += '<text x="' + (ml + h * sw + sw / 2).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + hh(h) + '</text>';
+    }
+    s += '<line class="ax" x1="' + ml + '" x2="' + (W - mr) + '" y1="' + (mt + ph) + '" y2="' + (mt + ph) + '"/>';
+    if (A.tU + A.tD === 0) s += '<text class="te" x="' + (ml + pw / 2) + '" y="' + (mt + ph / 2) + '" text-anchor="middle">No AS scheduled for this selection</text>';
+    for (let h = 0; h < 24; h++) s += '<rect class="hit" data-h="' + h + '" x="' + (ml + h * sw).toFixed(2) + '" y="' + mt + '" width="' + sw.toFixed(2) + '" height="' + (ph + mb) + '"/>';
+    s += '</svg>';
+    host.innerHTML = s;
+    geoA = { ml: ml, sw: sw };
+  }
+  function hourTip(h) {
+    const u = A.hU[h], d = A.hD[h], days = A.days || 1;
+    return '<div class="tt">Slot ' + slotName(h) + '</div><table>' +
+      '<tr><td></td><td></td><td class="n muted">MWh</td><td class="n muted">% of series</td><td class="n muted">avg MW</td></tr>' +
+      '<tr><td><i class="sw u"></i></td><td>AS Up</td><td class="n">' + f1(u) + '</td><td class="n">' + fPct(pct(u, A.tU)) + '</td><td class="n">' + f1(u / days) + '</td></tr>' +
+      '<tr><td><i class="sw d"></i></td><td>AS Down</td><td class="n">' + f1(d) + '</td><td class="n">' + fPct(pct(d, A.tD)) + '</td><td class="n">' + f1(d / days) + '</td></tr></table>' +
+      '<div class="muted" style="margin-top:4px;font-size:11.5px">avg MW = MWh ÷ ' + A.days + ' day' + (A.days === 1 ? '' : 's') + ' in range</div>';
+  }
+  function onHourMove(e) {
+    const t = e.target.closest ? e.target.closest('[data-h]') : null;
+    const hl = $('hlA');
+    if (!t) { hideTip(); if (hl) hl.setAttribute('visibility', 'hidden'); return; }
+    const h = +t.getAttribute('data-h');
+    if (hl && geoA) { hl.setAttribute('x', (geoA.ml + h * geoA.sw).toFixed(2)); hl.setAttribute('visibility', 'visible'); }
+    showTip(hourTip(h), e.clientX, e.clientY);
+  }
+  $('chA').addEventListener('pointermove', onHourMove);
+  $('chA').addEventListener('pointerdown', onHourMove);
+  $('chA').addEventListener('pointerleave', function () { hideTip(); const hl = $('hlA'); if (hl) hl.setAttribute('visibility', 'hidden'); });
+  function renderHourlyTable() {
+    const days = A.days || 1;
+    let s = '<table class="t"><thead><tr><th>Slot</th><th class="num">AS Up MWh</th><th class="num">% of Up</th><th class="num">Avg Up MW</th><th class="num">AS Down MWh</th><th class="num">% of Down</th><th class="num">Avg Down MW</th></tr></thead><tbody>';
+    for (let h = 0; h < 24; h++) {
+      const u = A.hU[h], d = A.hD[h];
+      s += '<tr><td>' + slotName(h) + '</td><td class="num">' + f1(u) + '</td><td class="num">' + fPct(pct(u, A.tU)) + '</td><td class="num">' + f1(u / days) +
+        '</td><td class="num">' + f1(d) + '</td><td class="num">' + fPct(pct(d, A.tD)) + '</td><td class="num">' + f1(d / days) + '</td></tr>';
+    }
+    s += '</tbody><tfoot><tr><td>Total</td><td class="num">' + f1(A.tU) + '</td><td class="num">' + fPct(A.tU > 0 ? 100 : NaN) + '</td><td class="num">' + f1(A.tU / days / 24) +
+      '</td><td class="num">' + f1(A.tD) + '</td><td class="num">' + fPct(A.tD > 0 ? 100 : NaN) + '</td><td class="num">' + f1(A.tD / days / 24) + '</td></tr></tfoot></table>';
+    $('tblA').innerHTML = s;
+  }
+
+  // ---------------------------------------------------------------- Chart B: time bands
+  // generic horizontal Up/Down bar pairs; items = [{label, u, d}], key = 'B' | 'T' (ids + data attribute)
+  function hbarsSvg(W, items, key, aria) {
+    const lab = 18, bh = 12, gap = 4, gg = 16, valW = W < 420 ? 150 : 172;
+    const bwMax = Math.max(60, W - valW), gh = lab + 2 * bh + gap + 4;
+    const H = Math.max(40, items.length * (lab + 2 * bh + gap + gg) - gg + 4);
+    let mx = 0; items.forEach(function (it) { if (it.u > mx) mx = it.u; if (it.d > mx) mx = it.d; }); mx = mx || 1;
+    let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + aria + '">';
+    if (!items.length) s += '<text class="te" x="' + (W / 2) + '" y="24" text-anchor="middle">No AS scheduled for this selection</text>';
+    let yy = 0;
+    items.forEach(function (it, i) {
+      s += '<rect class="hl" id="hl' + key + i + '" x="0" y="' + yy + '" width="' + W + '" height="' + gh + '" rx="4" visibility="hidden"/>';
+      s += '<text class="tl" x="2" y="' + (yy + 13) + '">' + esc(it.label) + '</text>';
+      [[it.u, 'bu', A.tU], [it.d, 'bd', A.tD]].forEach(function (q, k) {
+        const y1 = yy + lab + k * (bh + gap), w = q[0] > 0 ? Math.max(1.5, q[0] / mx * bwMax) : 0;
+        if (w > 0) s += '<rect class="' + q[1] + '" x="2" y="' + y1 + '" width="' + w.toFixed(2) + '" height="' + bh + '" rx="1.5"/>';
+        s += '<text class="tv" x="' + (w + 8).toFixed(1) + '" y="' + (y1 + bh - 1.5) + '">' + f1(q[0]) + ' MWh · ' + fPct(pct(q[0], q[2])) + '</text>';
+      });
+      s += '<rect class="hit" data-' + key + '="' + i + '" x="0" y="' + yy + '" width="' + W + '" height="' + gh + '"/>';
+      yy += lab + 2 * bh + gap + gg;
+    });
+    return s + '</svg>';
+  }
+  function hbarsHover(e, key, n) {
+    const t = e.target && e.target.closest ? e.target.closest('[data-' + key + ']') : null;
+    for (let i = 0; i < n; i++) { const r = $('hl' + key + i); if (r) r.setAttribute('visibility', 'hidden'); }
+    if (!t) { hideTip(); return -1; }
+    const i = +t.getAttribute('data-' + key), r = $('hl' + key + i);
+    if (r) r.setAttribute('visibility', 'visible');
+    return i;
+  }
+  function renderBands() {
+    const host = $('chB'), items = [];
+    for (let b = 0; b < NB; b++) items.push({ label: BANDS[b][0], u: A.bU[b], d: A.bD[b] });
+    host.innerHTML = hbarsSvg(chartWidth(host), items, 'B', 'AS Up and Down MWh by time band');
+  }
+  function onBandMove(e) {
+    const b = hbarsHover(e, 'B', NB);
+    if (b < 0) return;
+    const hrs = BANDS[b][1].length, days = A.days || 1;
+    showTip('<div class="tt">' + esc(BANDS[b][0]) + '</div><table>' +
+      '<tr><td></td><td></td><td class="n muted">MWh</td><td class="n muted">share</td><td class="n muted">avg MW</td></tr>' +
+      '<tr><td><i class="sw u"></i></td><td>AS Up</td><td class="n">' + f1(A.bU[b]) + '</td><td class="n">' + fPct(pct(A.bU[b], A.tU)) + '</td><td class="n">' + f1(A.bU[b] / days / hrs) + '</td></tr>' +
+      '<tr><td><i class="sw d"></i></td><td>AS Down</td><td class="n">' + f1(A.bD[b]) + '</td><td class="n">' + fPct(pct(A.bD[b], A.tD)) + '</td><td class="n">' + f1(A.bD[b] / days / hrs) + '</td></tr></table>' +
+      '<div class="muted" style="margin-top:4px;font-size:11.5px">' + hrs + ' hour slots; avg MW over the band and ' + A.days + ' day' + (A.days === 1 ? '' : 's') + '</div>', e.clientX, e.clientY);
+  }
+  $('chB').addEventListener('pointermove', onBandMove);
+  $('chB').addEventListener('pointerdown', onBandMove);
+  $('chB').addEventListener('pointerleave', function () { onBandMove({ target: document.body, clientX: 0, clientY: 0 }); });
+
+  // ---------------------------------------------------------------- whole schedule by schedule type
+  function fSigned(v) { return v == null ? '' : f1(v); }
+  function renderMix() {
+    const sec = $('secMix');
+    if (!HAS_MIX) { sec.classList.add('hidden'); return; }
+    sec.classList.remove('hidden');
+    const T = A.mixT;
+    let total = 0;
+    if (totIdx >= 0) total = T[totIdx]; else for (let k = 0; k < NS; k++) total += T[k];
+    let lo = 0, hi = 0;
+    for (let k = 0; k < NS; k++) { if (T[k] < lo) lo = T[k]; if (T[k] > hi) hi = T[k]; }
+    if (totIdx < 0) { if (total < lo) lo = total; if (total > hi) hi = total; }
+    const range = (hi - lo) || 1, z = -lo / range * 100;
+    function bar(v) {
+      const w = Math.abs(v) / range * 100, left = v >= 0 ? z : z - w;
+      return '<div class="dbar"><div class="b" style="left:' + left.toFixed(3) + '%;width:' + Math.max(v !== 0 ? 0.3 : 0, w).toFixed(3) + '%"></div><div class="z" style="left:' + z.toFixed(3) + '%"></div></div>';
+    }
+    function share(v) { return Math.abs(total) < 0.05 ? '–' : fPct(v / total * 100); }
+    function row(name, v) {
+      return '<tr title="' + esc(name) + ': ' + f1(v) + ' MWh (' + share(v) + ' of Total)"><td>' + esc(name) + '</td><td class="num">' + f1(v) + '</td><td class="num">' + share(v) + '</td><td class="barc">' + bar(v) + '</td></tr>';
+    }
+    let s = '<table class="t"><thead><tr><th>Schedule type</th><th class="num">MWh</th><th class="num">Share of Total</th><th>− drawn from grid  |  into grid +</th></tr></thead><tbody>';
+    for (let k = 0; k < NS; k++) if (k !== totIdx) s += row(STY[k], T[k]);
+    s += '</tbody><tfoot>' + row(totIdx >= 0 ? STY[totIdx] : 'Total', total).replace('<tr', '<tr class="tot"') + '</tfoot></table>';
+    $('tblMix').innerHTML = s;
+  }
+
+  // ---------------------------------------------------------------- Chart T: AS by technology
+  let techItems = [];
+  function renderTech() {
+    techItems = [];
+    for (let t = 0; t < NT; t++) if (A.tcU[t] + A.tcD[t] > 0 || A.tcPlants[t] > 0) techItems.push({ t: t, label: TECH[t] + '  ·  ' + A.tcPlants[t] + ' plant' + (A.tcPlants[t] === 1 ? '' : 's'), u: A.tcU[t], d: A.tcD[t] });
+    if (ui.tableT) { renderTechTable(); return; }
+    const host = $('chT');
+    host.innerHTML = hbarsSvg(chartWidth(host), techItems, 'T', 'AS Up and Down MWh by technology');
+  }
+  function renderTechTable() {
+    let s = '<table class="t"><thead><tr><th>Technology</th><th class="num">Plants with AS</th><th class="num">AS Up MWh</th><th class="num">% of Up</th><th class="num">AS Down MWh</th><th class="num">% of Down</th></tr></thead><tbody>';
+    techItems.forEach(function (it) {
+      s += '<tr><td>' + esc(TECH[it.t]) + '</td><td class="num">' + fInt(A.tcPlants[it.t]) + '</td><td class="num">' + f1(it.u) + '</td><td class="num">' + fPct(pct(it.u, A.tU)) +
+        '</td><td class="num">' + f1(it.d) + '</td><td class="num">' + fPct(pct(it.d, A.tD)) + '</td></tr>';
+    });
+    if (!techItems.length) s += '<tr><td colspan="6" class="muted">No AS scheduled for this selection.</td></tr>';
+    s += '</tbody><tfoot><tr><td>Total</td><td class="num">' + fInt(A.plants) + '</td><td class="num">' + f1(A.tU) + '</td><td class="num">' + fPct(A.tU > 0 ? 100 : NaN) +
+      '</td><td class="num">' + f1(A.tD) + '</td><td class="num">' + fPct(A.tD > 0 ? 100 : NaN) + '</td></tr></tfoot></table>';
+    $('tblT').innerHTML = s;
+  }
+  function onTechMove(e) {
+    const i = hbarsHover(e, 'T', techItems.length);
+    if (i < 0) return;
+    const it = techItems[i];
+    showTip('<div class="tt">' + esc(TECH[it.t]) + '</div><table>' +
+      '<tr><td></td><td></td><td class="n muted">MWh</td><td class="n muted">share</td></tr>' +
+      '<tr><td><i class="sw u"></i></td><td>AS Up</td><td class="n">' + f1(it.u) + '</td><td class="n">' + fPct(pct(it.u, A.tU)) + '</td></tr>' +
+      '<tr><td><i class="sw d"></i></td><td>AS Down</td><td class="n">' + f1(it.d) + '</td><td class="n">' + fPct(pct(it.d, A.tD)) + '</td></tr></table>' +
+      '<div class="muted" style="margin-top:4px;font-size:11.5px">' + A.tcPlants[it.t] + ' plant' + (A.tcPlants[it.t] === 1 ? '' : 's') + ' with AS in this selection</div>', e.clientX, e.clientY);
+  }
+  $('chT').addEventListener('pointermove', onTechMove);
+  $('chT').addEventListener('pointerdown', onTechMove);
+  $('chT').addEventListener('pointerleave', function () { onTechMove({ target: document.body, clientX: 0, clientY: 0 }); });
+  $('btnTblT').addEventListener('click', function () {
+    ui.tableT = !ui.tableT;
+    $('btnTblT').textContent = ui.tableT ? 'Show as chart' : 'Show as table';
+    $('chT').classList.toggle('hidden', ui.tableT); $('tblT').classList.toggle('hidden', !ui.tableT);
+    renderTech();
+  });
+
+  // ---------------------------------------------------------------- Chart C: daily trend
+  let geoC = null;
+  function renderDaily() {
+    const host = $('chC'), W = chartWidth(host), H = W < 520 ? 220 : 260;
+    const ml = 44, mr = 10, mt = 10, mb = 26, pw = W - ml - mr, ph = H - mt - mb;
+    const fi = st.fi, ti = st.ti, n = ti - fi + 1;
+    let s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Daily AS Up and Down MWh">';
+    if (n <= 0) {
+      s += '<text class="te" x="' + (W / 2) + '" y="' + (H / 2) + '" text-anchor="middle">No days in range</text></svg>';
+      host.innerHTML = s; geoC = null; return;
+    }
+    const mx = Math.max(arrMax(A.dU, fi, ti), arrMax(A.dD, fi, ti)), T = niceTicks(mx, W < 520 ? 4 : 5);
+    function y(v) { return mt + ph - v / T.max * ph; }
+    function x(i) { return n === 1 ? ml + pw / 2 : ml + (i - fi) / (n - 1) * pw; }
+    T.ticks.forEach(function (t) { const yy = y(t).toFixed(1); s += '<line class="gl" x1="' + ml + '" x2="' + (W - mr) + '" y1="' + yy + '" y2="' + yy + '"/><text x="' + (ml - 6) + '" y="' + (+yy + 3.5) + '" text-anchor="end">' + abbr(t) + '</text>'; });
+    s += '<line class="ax" x1="' + ml + '" x2="' + (W - mr) + '" y1="' + (mt + ph) + '" y2="' + (mt + ph) + '"/>';
+    const every = Math.max(1, Math.ceil(n / Math.max(1, Math.floor(pw / 64))));
+    for (let i = fi; i <= ti; i += every) s += '<text x="' + x(i).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="' + (n === 1 ? 'middle' : i === fi ? 'start' : 'middle') + '">' + dShort(DATES[i]) + '</text>';
+    let pu = '', pd = '';
+    for (let i = fi; i <= ti; i++) { pu += (i === fi ? 'M' : 'L') + x(i).toFixed(2) + ',' + y(A.dU[i]).toFixed(2); pd += (i === fi ? 'M' : 'L') + x(i).toFixed(2) + ',' + y(A.dD[i]).toFixed(2); }
+    if (n === 1) {
+      s += '<circle class="cu" cx="' + x(fi) + '" cy="' + y(A.dU[fi]) + '" r="4"/><circle class="cd" cx="' + x(fi) + '" cy="' + y(A.dD[fi]) + '" r="4"/>';
+    } else {
+      s += '<path class="ld" d="' + pd + '"/><path class="lu" d="' + pu + '"/>';
+    }
+    s += '<g id="xhC" visibility="hidden"><line class="cx" id="xlC" x1="0" x2="0" y1="' + mt + '" y2="' + (mt + ph) + '"/><circle class="cd" id="xdC" r="4"/><circle class="cu" id="xuC" r="4"/></g>';
+    s += '<rect class="hit" id="ovC" x="' + (ml - 6) + '" y="0" width="' + (pw + 12) + '" height="' + H + '"/>';
+    s += '</svg>';
+    host.innerHTML = s;
+    geoC = { W: W, ml: ml, pw: pw, fi: fi, n: n, x: x, y: y };
+  }
+  function onDayMove(e) {
+    const svg = $('chC').querySelector('svg');
+    if (!geoC || !svg) return;
+    const g = geoC, rect = svg.getBoundingClientRect();
+    const sx = (e.clientX - rect.left) * g.W / rect.width;
+    if (sx < g.ml - 8 || sx > g.ml + g.pw + 8) { dayLeave(); return; }
+    const k = g.n === 1 ? 0 : Math.max(0, Math.min(g.n - 1, Math.round((sx - g.ml) / g.pw * (g.n - 1))));
+    const i = g.fi + k, xx = g.x(i);
+    $('xlC').setAttribute('x1', xx); $('xlC').setAttribute('x2', xx);
+    $('xuC').setAttribute('cx', xx); $('xuC').setAttribute('cy', g.y(A.dU[i]));
+    $('xdC').setAttribute('cx', xx); $('xdC').setAttribute('cy', g.y(A.dD[i]));
+    $('xhC').setAttribute('visibility', 'visible');
+    const u = A.dU[i], d = A.dD[i];
+    showTip('<div class="tt">' + dDisp(DATES[i]) + '</div><table>' +
+      tipRow('u', 'AS Up', f1(u) + ' MWh', fMU(u) + ' MU') + tipRow('d', 'AS Down', f1(d) + ' MWh', fMU(d) + ' MU') +
+      '<tr><td></td><td>Net</td><td class="n">' + f1(u - d) + ' MWh</td><td></td></tr></table>', e.clientX, e.clientY);
+  }
+  function dayLeave() { hideTip(); const g = $('xhC'); if (g) g.setAttribute('visibility', 'hidden'); }
+  $('chC').addEventListener('pointermove', onDayMove);
+  $('chC').addEventListener('pointerdown', onDayMove);
+  $('chC').addEventListener('pointerleave', dayLeave);
+
+  // ---------------------------------------------------------------- sortable tables
+  function sortRows(rows, srt) {
+    const k = srt.k, dir = srt.dir;
+    return rows.slice().sort(function (a, b) {
+      const x = a[k], y = b[k];
+      if (x == null || y == null) { if (x == null && y == null) return a._tie - b._tie; return x == null ? 1 : -1; } // blanks always last
+      const r = (typeof x === 'string' || typeof y === 'string') ? String(x).localeCompare(String(y)) : (x - y);
+      return r !== 0 ? dir * r : (a._tie - b._tie);
+    });
+  }
+  function thead(cols, srt) {
+    return '<thead><tr>' + cols.map(function (c) {
+      const on = c.k === srt.k;
+      return '<th class="sortable' + (c.num ? ' num' : '') + '" data-k="' + c.k + '" tabindex="0" aria-sort="' + (on ? (srt.dir > 0 ? 'ascending' : 'descending') : 'none') + '">' +
+        c.label + '<span class="ar">' + (on ? (srt.dir > 0 ? '▲' : '▼') : '') + '</span></th>';
+    }).join('') + '</tr></thead>';
+  }
+  function bindSort(host, cols, getSort, setSort, rerender) {
+    function go(th) {
+      const k = th.getAttribute('data-k'), c = cols.find(function (q) { return q.k === k; }), cur = getSort();
+      setSort(cur.k === k ? { k: k, dir: -cur.dir } : { k: k, dir: c.num ? -1 : 1 });
+      rerender();
+    }
+    host.addEventListener('click', function (e) { const th = e.target.closest('th[data-k]'); if (th) go(th); });
+    host.addEventListener('keydown', function (e) { if (e.key !== 'Enter' && e.key !== ' ') return; const th = e.target.closest('th[data-k]'); if (th) { e.preventDefault(); go(th); } });
+  }
+
+  // ---------------------------------------------------------------- ranking table
+  const RANK_COLS = [
+    { k: 'rank', label: 'Rank', num: true, f: fInt },
+    { k: 'name', label: 'Plant' },
+    { k: 'region', label: 'Region' },
+    { k: 'type', label: 'Type' },
+    { k: 'tech', label: 'Technology' },
+    { k: 'maxMW', label: 'Max scheduled MW', num: true, f: fMW },
+    { k: 'nameMW', label: 'Nameplate MW', num: true, h: function (r) { return nameplateHtml(r.p); } },
+    { k: 'days', label: 'Days with AS', num: true, f: fInt },
+    { k: 'up', label: 'Up MWh', num: true, f: f1 },
+    { k: 'down', label: 'Down MWh', num: true, f: f1 },
+    { k: 'gross', label: 'Gross MWh', num: true, f: f1 },
+    { k: 'share', label: 'Share of gross', num: true, f: fPct }
+  ].concat(HAS_MIX ? [
+    { k: 'tot', label: 'Total schedule MWh', num: true, f: f1 },
+    { k: 'asPct', label: 'AS net % of Total', num: true, f: fPctN }
+  ] : []).concat([
+    { k: 'pkU', label: 'Peak Up MW', num: true, f: f1 },
+    { k: 'pkD', label: 'Peak Down MW', num: true, f: f1 },
+    { k: 'bandU', label: 'Main Up band' },
+    { k: 'bandD', label: 'Main Down band' }
+  ]);
+  function fPctN(v) { return v == null ? '–' : fPct(v); }
+  function asPctOf(net, tot) { return tot > 0 ? net / tot * 100 : null; }
+  function fMW(v) { return v == null ? '–' : f1(v); }
+  function nameplateHtml(p) {
+    const v = pNameMW[p], u = pCapUrl[p];
+    if (v == null) return '–';
+    return u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener" title="Capacity source (opens in a new tab)">' + f1(v) + '</a>' : f1(v);
+  }
+  function mainBand(arr, p) {
+    let best = -1, bv = 0;
+    for (let b = 0; b < NB; b++) { const v = arr[p * NB + b]; if (v > bv) { bv = v; best = b; } }
+    return best < 0 ? '—' : BANDS[best][0];
+  }
+  function renderRank() {
+    const gross = A.tU + A.tD, list = [];
+    for (let p = 0; p < NP; p++) {
+      const u = A.pU[p], d = A.pD[p];
+      if (A.pDays[p] === 0 && u + d === 0) continue;
+      list.push({ p: p, name: PL[p][0], region: PL[p][1], type: TYP[PL[p][2]], tech: TECH[pTech[p]], maxMW: pMaxMW[p], nameMW: pNameMW[p], days: A.pDays[p], up: u, down: d, gross: u + d,
+        share: pct(u + d, gross), tot: A.pTot[p], asPct: asPctOf(u - d, A.pTot[p]), pkU: A.pPU[p], pkD: A.pPD[p], bandU: mainBand(A.pBU, p), bandD: mainBand(A.pBD, p) });
+    }
+    list.sort(function (a, b) { return b.gross - a.gross || a.p - b.p; });
+    list.forEach(function (r, i) { r.rank = i + 1; r._tie = i; });
+    const rows = sortRows(list, ui.rankSort);
+    const lim = ui.rankAll ? rows.length : Math.min(50, rows.length);
+    let s = '<table class="t">' + thead(RANK_COLS, ui.rankSort) + '<tbody>';
+    for (let i = 0; i < lim; i++) {
+      const r = rows[i];
+      s += '<tr class="click" tabindex="0" data-p="' + r.p + '" title="Show ' + esc(r.name) + ' day by day">' + RANK_COLS.map(function (c) {
+        const v = r[c.k];
+        return '<td class="' + (c.num ? 'num' : '') + (c.k === 'name' ? ' pl' : '') + '">' + (c.h ? c.h(r) : c.f ? c.f(v) : esc(v)) + '</td>';
+      }).join('') + '</tr>';
+    }
+    if (rows.length === 0) s += '<tr><td colspan="' + RANK_COLS.length + '" class="muted">No plant had AS in this selection.</td></tr>';
+    s += '</tbody></table>';
+    $('tblRank').innerHTML = s;
+    $('btnAll').classList.toggle('hidden', rows.length <= 50);
+    $('btnAll').textContent = ui.rankAll ? 'Show top 50' : 'Show all ' + rows.length;
+    $('rankInfo').textContent = 'Showing ' + lim + ' of ' + rows.length + ' plant' + (rows.length === 1 ? '' : 's') + ' with AS.';
+  }
+  bindSort($('tblRank'), RANK_COLS, function () { return ui.rankSort; }, function (v) { ui.rankSort = v; }, renderRank);
+  function pickRow(e) {
+    if (e.target.closest('th') || e.target.closest('a')) return;
+    const tr = e.target.closest('tr[data-p]');
+    if (!tr) return;
+    setPlant(+tr.getAttribute('data-p'));
+    const sec = $('secDay');
+    if (sec && sec.scrollIntoView) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  $('tblRank').addEventListener('click', pickRow);
+  $('tblRank').addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.matches && e.target.matches('tr[data-p]')) pickRow(e); });
+
+  // ---------------------------------------------------------------- plant-day table
+  const DAY_COLS = [
+    { k: 'date', label: 'Date', f: dDisp },
+    { k: 'up', label: 'Up MWh', num: true, f: f1 },
+    { k: 'down', label: 'Down MWh', num: true, f: f1 },
+    { k: 'pkU', label: 'Peak Up MW', num: true, f: f1 },
+    { k: 'pkD', label: 'Peak Down MW', num: true, f: f1 }
+  ].concat(STY.slice(0, NS).map(function (name, k) { return { k: 'm' + k, label: esc(name) + ' MWh', num: true, f: fSigned, mix: k }; }))
+   .concat(HAS_MIX ? [{ k: 'asPct', label: 'AS net % of Total', num: true, f: fPctN }] : [])
+   .concat([
+    { k: 'sU', label: 'Up time slots', slots: true },
+    { k: 'sD', label: 'Down time slots', slots: true }
+  ]);
+  function renderPlantDays() {
+    const sec = $('secDay');
+    if (st.plant < 0) { sec.classList.add('hidden'); return; }
+    sec.classList.remove('hidden');
+    const p = st.plant;
+    $('dayTitle').innerHTML = esc(PL[p][0]) + ' by day <span class="dmeta">' + esc(PL[p][1]) + ' · ' + esc(TYP[PL[p][2]]) + ' · ' + esc(TECH[pTech[p]]) +
+      ' · max scheduled ' + fMW(pMaxMW[p]) + ' MW · nameplate ' + nameplateHtml(p) + (pNameMW[p] != null ? ' MW' : '') + '</span>';
+    const list = A.rows.map(function (i, k) {
+      const r = REC[i];
+      const o = { date: DATES[r[0]], up: rU[i], down: rN[i], pkU: r[6], pkD: r[7], sU: r[4] || '', sD: r[5] || '', _tie: k, _tot: null };
+      if (HAS_MIX) {
+        const mi = mixByKey.get(r[0] * NP + r[1]), m = mi == null ? null : MIX[mi];
+        for (let q = 0; q < NS; q++) o['m' + q] = m ? (m[2 + q] || 0) : null;
+        o._tot = m ? mixTotal(m) : null;
+        o.asPct = o._tot == null ? null : asPctOf(o.up - o.down, o._tot);
+      }
+      return o;
+    });
+    const rows = sortRows(list, ui.daySort);
+    let s = '<table class="t">' + thead(DAY_COLS, ui.daySort) + '<tbody>';
+    rows.forEach(function (r) {
+      s += '<tr>' + DAY_COLS.map(function (c) {
+        const v = r[c.k];
+        return '<td class="' + (c.num ? 'num' : '') + (c.slots ? ' slots' : '') + '">' + (c.f ? c.f(v) : (v ? esc(v) : '<span class="muted">—</span>')) + '</td>';
+      }).join('') + '</tr>';
+    });
+    if (rows.length === 0) s += '<tr><td colspan="' + DAY_COLS.length + '" class="muted">No AS scheduled for this plant in the selected dates.</td></tr>';
+    s += '</tbody>';
+    if (rows.length) {
+      // footer over the listed (AS) days: sums for MWh columns, max for peaks
+      let mu = 0, md = 0, upS = 0, dnS = 0, totS = 0, totN = 0;
+      const ms = new Float64Array(NS), mn = new Int32Array(NS);
+      rows.forEach(function (r) {
+        if (r.pkU > mu) mu = r.pkU; if (r.pkD > md) md = r.pkD; upS += r.up; dnS += r.down;
+        for (let q = 0; q < NS; q++) if (r['m' + q] != null) { ms[q] += r['m' + q]; mn[q]++; }
+        if (r._tot != null) { totS += r._tot; totN++; }
+      });
+      const foot = { date: 'Total (' + rows.length + ' day' + (rows.length === 1 ? '' : 's') + ')', up: f1(upS), down: f1(dnS), pkU: f1(mu), pkD: f1(md),
+        asPct: totN ? fPctN(asPctOf(upS - dnS, totS)) : '–', sU: '', sD: '' };
+      for (let q = 0; q < NS; q++) foot['m' + q] = mn[q] ? f1(ms[q]) : '';
+      s += '<tfoot><tr>' + DAY_COLS.map(function (c) { return '<td class="' + (c.num ? 'num' : '') + '">' + foot[c.k] + '</td>'; }).join('') + '</tr></tfoot>';
+    }
+    s += '</table>';
+    $('tblDay').innerHTML = s;
+  }
+  bindSort($('tblDay'), DAY_COLS, function () { return ui.daySort; }, function (v) { ui.daySort = v; }, renderPlantDays);
+
+  // ---------------------------------------------------------------- KPIs + selection line
+  function renderKPIs() {
+    const g = A.tU + A.tD, n = A.tU - A.tD;
+    const cal = A.days > 0 ? calDays(DATES[st.fi], DATES[st.ti]) : 0;
+    function tile(sw, label, val, unit, s2) {
+      return '<div class="card kpi"><div class="lab">' + (sw ? '<i class="sw ' + sw + '"></i>' : '') + label + (unit ? ', ' + unit : '') + '</div><div class="val">' + val + '</div>' + (s2 ? '<div class="s2">' + s2 + '</div>' : '') + '</div>';
+    }
+    $('kpis').innerHTML =
+      tile('u', 'AS Up', f1(A.tU), 'MWh', fMU(A.tU) + ' MU') +
+      tile('d', 'AS Down', f1(A.tD), 'MWh', fMU(A.tD) + ' MU') +
+      tile('', 'Gross (Up + Down)', f1(g), 'MWh', fMU(g) + ' MU') +
+      tile('', 'Net (Up − Down)', f1(n), 'MWh', fMU(n) + ' MU') +
+      tile('', 'Plant-days with AS', fInt(A.plantDays), '', 'one plant on one day') +
+      tile('', 'Plants with AS', fInt(A.plants), '', 'of ' + NP + ' in file') +
+      tile('', 'Days in range', fInt(A.days), '', cal && cal !== A.days ? cal + ' calendar days' : 'with data');
+    const parts = [];
+    parts.push('Showing <b>' + (A.days > 0 ? dDisp(DATES[st.fi]) + ' to ' + dDisp(DATES[st.ti]) : 'no dates') + '</b>');
+    parts.push('Region: <b>' + esc(st.region || 'All') + '</b>');
+    parts.push('Type: <b>' + esc(st.type >= 0 ? TYP[st.type] : 'All') + '</b>');
+    parts.push('Technology: <b>' + esc(st.tech >= 0 ? TECH[st.tech] : 'All') + '</b>');
+    parts.push('Plant: <b>' + esc(st.plant >= 0 ? PL[st.plant][0] : 'All') + '</b>');
+    $('selline').innerHTML = parts.join('  ·  ');
+  }
+
+  // ---------------------------------------------------------------- update loop
+  function renderCharts() { renderHourly(); renderBands(); renderTech(); renderMix(); renderDaily(); }
+  if (!HAS_MIX) { $('noteMix').classList.add('hidden'); $('dayMixNote').classList.add('hidden'); }
+  function update() {
+    hideTip();
+    A = aggregate(st);
+    renderKPIs(); renderCharts(); renderRank(); renderPlantDays();
+  }
+  let rz = 0, lastW = 0;
+  window.addEventListener('resize', function () {
+    cancelAnimationFrame(rz);
+    rz = requestAnimationFrame(function () { const w = document.body.clientWidth; if (w !== lastW) { lastW = w; if (A) renderCharts(); } });
+  });
+  window.addEventListener('scroll', hideTip, { passive: true });
+
+  syncInputs();
+  lastW = document.body.clientWidth;
+  update();
+  window.ASDash = { aggregate: aggregate, state: st, last: function () { return A; } };
+})();
+</script>
+</body>
+</html>

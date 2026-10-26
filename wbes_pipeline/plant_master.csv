@@ -1,0 +1,340 @@
+﻿plant,technology,nameplate_mw,ac_or_dc,bess_mwh,project_name,developer,source_url,confidence,note,region,automatic_technology (reference only)
+SASAN,,,,,,,,,,WR,Conventional (thermal / hydro)
+KUDGI,,,,,,,,,,SR,Conventional (thermal / hydro)
+SOLAPUR,,,,,,,,,,WR,Conventional (thermal / hydro)
+JHAJJAR,,,,,,,,,,NR,Conventional (thermal / hydro)
+COASTGEN,,,,,,,,,,SR,Conventional (thermal / hydro)
+DADRIT,,,,,,,,,,NR,Conventional (thermal / hydro)
+RSTPSU1TO6,,,,,,,,,,SR,Conventional (thermal / hydro)
+NPGC,,,,,,,,,,ER,Conventional (thermal / hydro)
+KSTPS12,,,,,,,,,,WR,Conventional (thermal / hydro)
+DADRT2,,,,,,,,,,NR,Conventional (thermal / hydro)
+SEILP2,,,,,,,,,,SR,Conventional (thermal / hydro)
+SIPAT1,,,,,,,,,,WR,Conventional (thermal / hydro)
+KHARGONE,,,,,,,,,,WR,Conventional (thermal / hydro)
+BRBCL,,,,,,,,,,ER,Conventional (thermal / hydro)
+TALST2,,,,,,,,,,SR,Conventional (thermal / hydro)
+NTPL,,,,,,,,,,SR,Conventional (thermal / hydro)
+APL_Raipur_TPP,,,,,,,,,,WR,Conventional (thermal / hydro)
+SINGRAULI,,,,,,,,,,NR,Conventional (thermal / hydro)
+TANDA2,,,,,,,,,,NR,Conventional (thermal / hydro)
+FSTPP_I_II,,,,,,,,,,ER,Conventional (thermal / hydro)
+TelanganaSTPP,,,,,,,,,,SR,Conventional (thermal / hydro)
+MPL,,,,,,,,,,ER,Conventional (thermal / hydro)
+VALLURNTECL,,,,,,,,,,SR,Conventional (thermal / hydro)
+SIMHAPURI,,,,,,,,,,SR,Conventional (thermal / hydro)
+MAHAN_ENERGEN,,,,,,,,,,WR,Conventional (thermal / hydro)
+UTTARPRADESH_STATE,,,,,,,,,,NR,State control area
+JIPL,,,,,,,,,,ER,Conventional (thermal / hydro)
+BGTPP,,,,,,,,,,NER,Conventional (thermal / hydro)
+RGPPL,,,,,,,,,,WR,Conventional (thermal / hydro)
+DVC_STATE,,,,,,,,,,ER,State control area
+North_Karanpura_STPS,,,,,,,,,,ER,Conventional (thermal / hydro)
+LARA,,,,,,,,,,WR,Conventional (thermal / hydro)
+TSTPP_I,,,,,,,,,,ER,Conventional (thermal / hydro)
+JSWEL_UTKAL,,,,,,,,,,ER,Conventional (thermal / hydro)
+BARH,,,,,,,,,,ER,Conventional (thermal / hydro)
+MOUDA2,,,,,,,,,,WR,Conventional (thermal / hydro)
+PTPS_I,,,,,,,,,,ER,Conventional (thermal / hydro)
+GADARWARA,,,,,,,,,,WR,Conventional (thermal / hydro)
+MBMP,,,,,,,,,,WR,Conventional (thermal / hydro)
+SIMHST1,,,,,,,,,,SR,Conventional (thermal / hydro)
+JSW_MAHANADI,,,,,,,,,,WR,Conventional (thermal / hydro)
+KHSTPP_II,,,,,,,,,,ER,Conventional (thermal / hydro)
+SIPAT2,,,,,,,,,,WR,Conventional (thermal / hydro)
+JPL2,,,,,,,,,,WR,Conventional (thermal / hydro)
+RKM_POWER,,,,,,,,,,WR,Conventional (thermal / hydro)
+Darlipali_NTPC,,,,,,,,,,ER,Conventional (thermal / hydro)
+DADRI,,,,,,,,,,NR,Conventional (thermal / hydro)
+VSTPS4,,,,,,,,,,WR,Conventional (thermal / hydro)
+SIMHST2,,,,,,,,,,SR,Conventional (thermal / hydro)
+RIHAND3,,,,,,,,,,NR,Conventional (thermal / hydro)
+NSPCL,,,,,,,,,,WR,Conventional (thermal / hydro)
+RIHAND1,,,,,,,,,,NR,Conventional (thermal / hydro)
+RIHAND2,,,,,,,,,,NR,Conventional (thermal / hydro)
+MOUDA1,,,,,,,,,,WR,Conventional (thermal / hydro)
+VSTPS3,,,,,,,,,,WR,Conventional (thermal / hydro)
+JPNIGRIE_JNSTPP,,,,,,,,,,WR,Conventional (thermal / hydro)
+VSTPS2,,,,,,,,,,WR,Conventional (thermal / hydro)
+UNCHAHAR4,,,,,,,,,,NR,Conventional (thermal / hydro)
+AURY,,,,,,,,,,NR,Conventional (thermal / hydro)
+VSTPS1,,,,,,,,,,WR,Conventional (thermal / hydro)
+GANDHAR,,,,,,,,,,WR,Conventional (thermal / hydro)
+TPCL_Mundra,,,,,,,,,,WR,Conventional (thermal / hydro)
+LAMKPL,,,,,,,,,,WR,Conventional (thermal / hydro)
+RSTPSU7,,,,,,,,,,SR,Conventional (thermal / hydro)
+UNCHAHAR1,,,,,,,,,,NR,Conventional (thermal / hydro)
+GEB_State,,,,,,,,,,WR,State control area
+UNCHAHAR2,,,,,,,,,,NR,Conventional (thermal / hydro)
+KAWAS,,,,,,,,,,WR,Conventional (thermal / hydro)
+NTPCREL_PSS2_KPS2_S,,1255.0,unknown,,Khavda-I Solar PV Project (CPSU Scheme Ph-II Tr-III),NTPC Renewable Energy Ltd (NTPC Green Energy),https://powerline.net.in/2025/06/10/ntpc-green-commissions-first-110-25-mw-of-1255-mw-khavda-i-solar-project/,medium,"Web-checked 26-Oct-2026. 1,255 MW total, commissioned in tranches from Jun 2025 (110.25, 75.5, 13.98, 130.47 MW ... seen). Max scheduled 1040.7 fits a partly/fully commissioned 1255 MW plant. KPS2/PSS2 mapping not confirmed by source.",WR,Solar
+APL_Raigarh_TPP,,,,,,,,,,WR,Conventional (thermal / hydro)
+BALCO,,,,,,,,,,WR,Conventional (thermal / hydro)
+DBPL,,,,,,,,,,WR,Conventional (thermal / hydro)
+FSTPP_III,,,,,,,,,,ER,Conventional (thermal / hydro)
+KSTPS7,,,,,,,,,,WR,Conventional (thermal / hydro)
+ILFS,,,,,,,,,,SR,Conventional (thermal / hydro)
+KHSTPP_I,,,,,,,,,,ER,Conventional (thermal / hydro)
+GMRKEL,,,,,,,,,,ER,Conventional (thermal / hydro)
+VSTPS5,,,,,,,,,,WR,Conventional (thermal / hydro)
+ANTA,,,,,,,,,,NR,Conventional (thermal / hydro)
+AGBPP,,,,,,,,,,NER,Conventional (thermal / hydro)
+AHEJ5L_PSS5_KPS1_S,,,unknown,,Adani Hybrid Energy Jaisalmer Five Ltd - Khavda solar,Adani Green Energy (AHEJ5L),https://www.energetica-india.net/keyword/adani-hybrid-energy-jaisalmer-five,low,"Web-checked 26-Oct-2026. SPV confirmed at Khavda, but only incremental tranches found: 50 MW solar + 31.2 MW wind (30-Sep-2025), 126 MW hybrid (1-Jan-2026), 50 MW solar (Mar-2026), 50 MW solar (1-Jun-2026). No cumulative total matching 570 MW found.",WR,Solar
+SGEL_BKN2,,1000.0,unknown,,"1,000 MW Bikaner Solar Power Project (Banderwala village)",SJVN Green Energy Ltd (SGEL),https://powerline.net.in/2025/12/30/sjvn-commissions-1000-mw-bikaner-solar-power-project-in-rajasthan/,medium,"Web-checked 26-Oct-2026. SGEL = SJVN Green Energy (not SB Energy). Fully commissioned, COD 24-Dec-2025; first 241.77 MW Apr-2025. Bikaner-II connection not stated in source; capacity consistent with max 872.6.",NR,Solar
+APNRL,,,,,,,,,,ER,Conventional (thermal / hydro)
+MTPS_II,,,,,,,,,,ER,Conventional (thermal / hydro)
+Kurnool_AMGreen_S,,,unknown,,"Pinnapuram Integrated Renewable Energy Project (solar part), Kurnool",Greenko / AM Green,https://mercomindia.com/amara-raja-bos-contract-greenko,low,"Web-checked 26-Oct-2026. Greenko IREP Ph-1 approved for 1,000 MW solar + 550 MW wind + 1,200 MW PSP; Amara Raja BoS contract for 500 MW AC / 700 MWp near Uyyalavada, Kurnool. 500 MW AC is below max 573, so either a further block exists or this is a different project. No commissioned total found.",SR,Hybrid - solar part
+TRN_ENERGY,,,,,,,,,,WR,Conventional (thermal / hydro)
+Sarda_Energy_Raigarh,,,,,,,,,,WR,Conventional (thermal / hydro)
+NNTPP,,,,,,,,,,SR,Conventional (thermal / hydro)
+BARH_I,,,,,,,,,,ER,Conventional (thermal / hydro)
+AP43PL_BKN,,600.0,AC,,"Azure Power 600 MW SECI ISTS solar, Bikaner",Azure Power Forty Three Pvt Ltd (Azure Power),https://www.energetica-india.net/news/azure-power-refinances-600-mw-bikaner-solar-project-at-lowest-interest-rate-in-its-portfolio,high,"Web-checked 26-Oct-2026. AP43PL = Azure Power Forty Three Pvt Ltd; SPV named as owner of the 600 MW ISTS Bikaner project, fully commissioned Dec-2021/Jan-2022, SECI tariff INR 2.53. Matches max 600 exactly. AC/DC: SECI contracted capacity (assumed AC).",NR,Solar
+AGE24AL_PSS3_KPS1_S,,,unknown,,Adani Green Energy Twenty Four A Ltd - Khavda solar,Adani Green Energy (AGE24AL),https://powerline.net.in/2025/04/01/agel-operationalises-additional-480-mw-renewable-projects-at-khavda/,low,Web-checked 26-Oct-2026. Only tranches found: 200 MW solar (~1-Apr-2025) and joint 551 MW (Feb-2024) / 448.95 MW (Mar-2024) with sister SPV AGE24B. No per-SPV total matching 472.5 MW.,WR,Solar
+GIPCL_PSS1_KPS2_S,,600.0,unknown,,GIPCL 600 MW Khavda Solar Project,Gujarat Industries Power Co Ltd (GIPCL),https://www.energetica-india.net/news/gipcl-fully-operationalises-its-600-mw-solar-power-projects-at-khavda-renewable-energy-park,medium,Web-checked 26-Oct-2026. Fully operational by Jan-2026 (3x105 + 150 + 135 MW). PPA with GUVNL. Matches max 596.4. KPS2/PSS1 not stated in source.,WR,Solar
+NOKH_BHDL2,,735.0,unknown,,"Nokh Solar Project (3 x 245 MW), Jaisalmer",NTPC Ltd,https://www.pv-magazine-india.com/2025/12/17/ntpcs-735-mw-nokh-solar-project-now-fully-operational,medium,"Web-checked 26-Oct-2026. Fully operational Dec-2025 (DCR modules, 400 kV ISTS). Matches max 709.2. Bhadla-II connection not stated in source.",NR,Solar
+KSPPNL_BHDL2,,,unknown,,,,,none,Web-checked 26-Oct-2026. Could not decode KSPPNL; no source found for a 550 MW plant under this name at Bhadla-II.,NR,Solar
+ARE56L_PSS10_KPS1_S,,,unknown,,Adani Renewable Energy Fifty Six Ltd - Khavda solar,Adani Green Energy (ARE56L),https://powerline.net.in/2025/09/03/agel-commissions-125-mw-solar-project-at-khavda/,low,"Web-checked 26-Oct-2026. Only tranches found: 50 MW (15-May-2025), 125 MW (1-Sep-2025), 87.5 MW (~1-Oct-2025), 75 MW (Dec-2025). No total matching 606.2 MW; SPV likely spans several PSS connection points.",WR,Solar
+AGE25L_BHDL2,,500.0,unknown,,"Adani Green Energy Twenty Five Ltd solar, Badi Sid & Kalyan Ki Sid (Jodhpur/Phalodi)",Adani Green Energy (AGE25L),https://nsearchives.nseindia.com/corporate/ADANIGREEN_12122024113353_Letters.pdf,medium,"Web-checked 26-Oct-2026. Two 250 MW tranches: Badi Sid (11-Dec-2024, NSE filing) + Badi Sid & Kalyan Ki Sid (~21-Mar-2025, AGEL letter https://www.adanigreenenergy.com/-/media/Project/GreenEnergy/Corporate-Announcement/Business/Letters-24032025.pdf). Sum 500 matches max 500. Bhadla-II link inferred from location.",NR,Solar
+AGE25BL_PSS2_KPS1_S,,,unknown,,Adani Green Energy Twenty Five B Ltd - Khavda solar,Adani Green Energy (AGE25BL),https://solarquarter.com/2025/03/01/adani-green-commissions-83-mw-solar-power-project-in-khavda-gujarat,low,"Web-checked 26-Oct-2026. Tranches found: 83 MW solar (1-Mar-2025), 25 MW hybrid (Sep-2025). A search summary cited an AGEL Mar-2024 filing listing AGE25B at 500 MW (not verified). Nothing matches 594.3 MW.",WR,Solar
+MEENAKSHI,,,,,,,,,,SR,Conventional (thermal / hydro)
+NLCEXP,,,,,,,,,,SR,Conventional (thermal / hydro)
+SEIL,,,,,,,,,,SR,Conventional (thermal / hydro)
+UNCHAHAR3,,,,,,,,,,NR,Conventional (thermal / hydro)
+AGE24L_FTG2,,500.0,unknown,,"Adani Green Energy Twenty Four Ltd solar, Bhimsar & Dwada (Jaisalmer)",Adani Green Energy (AGE24L),https://renewablewatch.in/2025/02/24/adani-green-energy-commissions-250-mw-solar-project-in-rajasthan/,medium,"Web-checked 26-Oct-2026. Two 250 MW tranches: Bhimsar & Dwada (22-Feb-2025) + Bhimsar (21-Mar-2025, https://www.businesstoday.in/amp/markets/stocks/story/adani-green-energy-arm-commissions-250-mw-solar-power-project-in-rajasthan-stock-up-468610-2025-03-20). Sum 500 matches max 500. Fatehgarh-II link inferred (Jaisalmer).",NR,Solar
+JPL,,,,,,,,,,WR,Conventional (thermal / hydro)
+GMR_WARORA,,,,,,,,,,WR,Conventional (thermal / hydro)
+ASEJOPL_S_FTG2,,420.0,AC,,"Jaisalmer (Adani) III wind-solar hybrid, 450 MW (420 MW solar + 105 MW wind)",Adani Solar Energy Jaisalmer One Pvt Ltd (Adani Green),https://www.gem.wiki/Jaisalmer_(Adani)_III_Solar_Hybrid_Farm,high,"Web-checked 26-Oct-2026. SPV named as owner of 450 MW SECI hybrid (INR 2.67) = 420 MW solar + 105 MW wind (https://business-news-today.com/adani-green-energy-commissions-third-hybrid-power-plant-in-jaisalmer/); GEM lists solar part 420 MWac, 2022. Matches max 420. Our 'Solar' guess is the solar leg of a hybrid.",NR,Hybrid - solar part
+DGEN,,,,,,,,,,WR,Conventional (thermal / hydro)
+HARYANA_STATE,,,,,,,,,,NR,State control area
+PVG_TATARENEWABLE,,400.0,AC,,Tata Power Renewable - Pavagada Solar Park blocks,Tata Power Renewable Energy Ltd,https://www.pv-magazine-india.com/2018/07/12/tata-power-wins-250-mw-solar-project-in-karnataka,medium,"Web-checked 26-Oct-2026. 150 MW operating since FY18 + 250 MW (5 x 50 MW, KREDL) awarded 2018 = 400 MW total at Pavagada. Matches max 397. Assumes WBES code aggregates all Tata blocks.",SR,Solar
+AWEK1L,,,unknown,,Adani Wind Energy Kutchh One Ltd,Adani Green Energy,https://power-technology.com/?p=244248,low,"Web-checked 26-Oct-2026. Only source: GlobalData profile of a 250 MW wind project by this SPV (listed 'dormant', data looks unreliable). 250 < max 410, so not a match; no credible capacity found.",WR,Wind
+NLCIIST2,,,,,,,,,,SR,Conventional (thermal / hydro)
+MCCPL,,,,,,,,,,WR,Conventional (thermal / hydro)
+BIHAR_STATE,,,,,,,,,,ER,State control area
+AHEJOL_S_FTG2,,360.0,unknown,,"Adani 390 MW wind-solar hybrid, Jaisalmer (India's first hybrid)",Adani Hybrid Energy Jaisalmer One Ltd (Adani Green),https://renewablewatch.in/2022/05/30/adani-green-commissions-hybrid-power-plant-in-rajasthan/,medium,Web-checked 26-Oct-2026. 390 MW SECI hybrid (INR 2.69) commissioned May-2022; at award: 360 MW solar + 100 MW wind. Solar part 360 matches max 360. As-built split not confirmed. Our 'Solar' guess is the solar leg of a hybrid.,NR,Hybrid - solar part
+BEEMPOW_AGAR_RUMS_S,,350.0,AC,,"Agar Solar Park Unit (350 MW), RUMSL",Beempow Energy Pvt Ltd (O2 Power; reportedly sold to Sekura/Edelweiss),https://solarquarter.com/2021/07/13/o2-power-avaada-energy-win-rumsls-550-mw-agar-pv-project,high,"Web-checked 26-Oct-2026. Beempow named as winner of 350 MW unit of RUMSL Agar 550 MW tender (INR 2.444). GEM lists 350 MWac, operating 2024 (https://www.gem.wiki/Agar_(O2)_solar_park). Matches max 350.",WR,Solar
+Tuticorin_JSWRenew_W,,,unknown,,"JSW 450 MW ISTS wind (SECI Tranche X), Tuticorin",JSW Renew Energy Two Ltd (JSW Energy),https://powerline.net.in/2024/09/17/jsw-renew-energy-two-commissions-300-mw-wind-power-project-under-seci-x/,low,"Web-checked 26-Oct-2026. Web lead, low confidence: 450 MW. 300 MW of the 450 MW Tuticorin SECI-X project commissioned by Sep-2024. Max 478 exceeds 450, so this code may aggregate more than one JSW wind project at Tuticorin; capacity not confirmed.",SR,Wind
+PVG_IRCON_S,,500.0,AC,,"IRCON 500 MW AC / 600 MW DC solar, Pavagada (IREDA 2021 auction)",IRCON Renewable Power Ltd (Ircon International),https://www.nbmcw.com/news/ircon-synchronizes-75-mw-solar-power-in-karnataka-total-capacity-reaches-300-mw.html,high,"Web-checked 26-Oct-2026. 500 MW AC (600 MWp DC) project at Pavagada; 300 MW operational by 15-Jul-2025, a further 100 MW reported Sep-2025 (https://renewablewatch.in/2025/09/17/ngel-commissions-100-mw-part-capacity-at-pavagada-solar-park/). Max 329.7 fits partial commissioning; full 500 MW status by Oct-2026 not confirmed.",SR,Solar
+SITAC_CHUGGER_BHJ2_W,,300.0,unknown,,"Kutch (Sitac) wind farm, SECI 300 MW",Sitac RE / EDF Renewables JV,https://www.gem.wiki/Kutch_(Sitac)_wind_farm,medium,"Web-checked 26-Oct-2026. 300 MW onshore wind in Kutch, SECI PPA signed 2019 (https://renewablewatch.in/2019/02/08/sitac-signs-ppa-seci-300-mw-wind-power-project/), operating 2022 per GEM. Matches max 291.6. 'Chugger' site and Bhuj-II link not confirmed.",WR,Wind
+ARE45L_PSS5_KPS1_S,,,unknown,,Adani Renewable Energy Forty Five Ltd - Khavda,Adani Green Energy (ARE45L),https://indianinfrastructure.com/?p=251191,low,Web-checked 26-Oct-2026. Only a 75 MW tranche (technology unstated) found; nothing matching 250 MW.,WR,Solar
+PGLR_SREPL,,,unknown,,,,https://renewablewatch.in/2023/08/16/seci-floats-bids-for-1-3-gw-wind-projects/,none,"Web-checked 26-Oct-2026. SREPL not decoded. SECI Tranche XV included a 300 MW wind block at Karur (near Pugalur) matching max 300, but the winner/SPV could not be identified.",SR,Wind
+TEHRIPSP,,,,,,,,,,NR,Conventional (thermal / hydro)
+ASunceEPL_BKN,,,unknown,,,"Avaada (Avaada Sunce Energy Pvt Ltd, inferred)",,none,"Web-checked 26-Oct-2026. No source naming Avaada Sunce Energy. Avaada has several Bikaner plants (1.25 GWp single site, 300 MW GEM entry); could not tie a 350 MW plant to this SPV.",NR,Solar
+AvSEPL_BHDL2,,,unknown,,"Avaada 320 MW solar PV park, Rajasthan (NHPC PPA)",Avaada Energy (SPV name unconfirmed),https://power-technology.com/?p=300596,low,"Web-checked 26-Oct-2026. Web lead, low confidence: 320 MW. GlobalData profile: 320 MW Avaada solar in Rajasthan, commissioned Sep-2022, sold to NHPC. Matches max 320, but SPV (AvSEPL) and Bhadla-II location not confirmed.",NR,Solar
+ARE57L_PSS13_KPS1_S,,,unknown,,Adani Renewable Energy Fifty Seven Ltd - Khavda solar,Adani Green Energy (ARE57L),https://www.energetica-india.net/keyword/adani-renewable-energy-fifty-seven,low,"Web-checked 26-Oct-2026. Only tranches found: 212.5, 37.5, 187.5, 125 MW (2025). No total matching 1189.7 MW.",WR,Solar
+KOTESHWR,,,,,,,,,,NR,Conventional (thermal / hydro)
+ABCREPL_BHDL2,,,unknown,,ABC Jodhpur Solar PV Park,ABC Renewable Energy Pvt Ltd (Brookfield / Axis Energy JV),https://www.power-technology.com/?p=249023,low,"Web-checked 26-Oct-2026. Web lead, low confidence: 450 MW. GlobalData: 450 MW, commissioned Jun-2022, offtakers NTPC and SECI; Bar & Bench reports financing for a 400 MW Rajasthan project by the same SPV. Max 300 is below both, so the code may cover only part of the capacity.",NR,Solar
+ANP_AYANA,,250.0,AC,,"Ayana Ananthapuramu Solar, NP Kunta Ultra Mega Solar Park",Ayana Ananthapuramu Solar Pvt Ltd (Ayana Renewable),https://www.aiib.org/en/projects/details/2020/proposed/_download/India/PSI-P000384-Ayana-Ananatapuramu-NTPC-Solar-Project_20200730.pdf,high,"Web-checked 26-Oct-2026. 250 MW, PPA with NTPC (INR 2.73), evacuates via PGCIL NP Kunta 400/220 kV substation, COD ~Mar-2021. Matches max 250. (Wikipedia lists 228.5 MW for Ayana.)",SR,Solar
+ASSPL_BKN2,,300.0,AC,,"ACME Sikar 300 MW solar, Bikaner",ACME Sikar Solar Pvt Ltd (ACME Solar),https://www.pv-magazine-india.com/2025/06/24/acme-solar-commissions-300-mw-sikar-solar-project-in-rajasthan,high,"Web-checked 26-Oct-2026. Fully commissioned 23-Jun-2025 (SECI XVIII, INR 3.05); connected to Bikaner-II substation by 220 kV line. Matches max 300.",NR,Solar
+AcHPPL_BHDL2,,300.0,unknown,,"ACME Heergarh 300 MW solar, Rajasthan",ACME Heergarh Powertech Pvt Ltd (ACME Solar),https://acmesolar.in/our-journey,medium,"Web-checked 26-Oct-2026. ACME timeline: 300 MW ACME Heergarh solar project commissioned in Rajasthan, 2022. Matches max 300. Site/Bhadla-II connection not stated.",NR,Solar
+AHEJ2L_S_FTG2,,,unknown,,"Adani 600 MW Jaisalmer wind-solar hybrid (AHEJ2L + AHEJ3L), solar component",Adani Green Energy (Adani Hybrid Energy Jaisalmer Two Ltd),https://www.adanigreenenergy.com/-/media/Project/GreenEnergy/Corporate-Announcement/Business/29092022-Media-Release-Commissioning-of-600-MW-Hybrid-Power-Plant.pdf,low,"Web-checked 26-Oct-2026. AGEL release (29-Sep-2022): 600 MW hybrid at Jaisalmer = 600 MW solar + ~150 MW wind, housed in AHEJ2L and AHEJ3L; SECI PPA Rs 2.69. Per-SPV split NOT published. Code suffix _S means solar part of a hybrid, not a standalone solar plant. Max scheduled ~295 for each of AHEJ2L/AHEJ3L suggests ~300 MW solar each (inference, unsourced).",NR,Hybrid - solar part
+AHEJ3L_S_FTG2,,,unknown,,"Adani 600 MW Jaisalmer wind-solar hybrid (AHEJ2L + AHEJ3L), solar component",Adani Green Energy (Adani Hybrid Energy Jaisalmer Three Ltd),https://www.adanigreenenergy.com/-/media/Project/GreenEnergy/Corporate-Announcement/Business/29092022-Media-Release-Commissioning-of-600-MW-Hybrid-Power-Plant.pdf,low,"Web-checked 26-Oct-2026. Same project as AHEJ2L: 600 MW solar + ~150 MW wind combined across AHEJ2L and AHEJ3L; per-SPV split not published. Solar part of a hybrid, not standalone solar. ~300 MW solar per SPV is an inference from max_scheduled, unsourced.",NR,Hybrid - solar part
+ERCPL_FTG2,,300.0,AC,,"Eden SECI Tranche-III 300 MW ISTS solar, Jaisalmer",EDEN Renewables India (Eden Renewable Cite Pvt Ltd; TotalEnergies/EDF JV),https://solarquarter.com/2021/08/16/edens-300-mw-ac-solar-farm-in-rajasthan-starts-feeding-power-into-grid/,medium,"Web-checked 26-Oct-2026. 300 MW AC (about 450 MWp DC per GlobalData/power-technology profile of 'Eden Renewable Cite SECI 1200 MW ISTS-III'), SECI tariff Rs 2.60, COD Aug 2021; GEM places it in Jaisalmer (Fatehgarh-II PS is in Jaisalmer). ERCPL = Eden Renewable Cite Pvt Ltd is inferred from the initials. Do not confuse with Eden Renewable Bercy (another 300 MW, also at Fatehgarh-II per CTUIL, later date).",NR,Solar
+RWE_AP2_SECI_III,,300.0,AC,,"ReNew Wind Energy (AP2) SECI Tranche-III wind, project P2 (Kutch)",ReNew (ReNew Wind Energy (AP2) Pvt Ltd),https://www.seci.co.in/assets/uploads/C96B5193-3B2F-4C68-898C-26E1A9D9E802.pdf,high,"Web-checked 26-Oct-2026. SECI wind status sheet: WPD-ISTS-T3-RWEAP2PL-P2-300GJ, 300 MW, Kutch, Gujarat, commissioned in tranches Oct-2020 to Mar-2021 (300 MW commissioned). A separate 100 MW P1 of the same SPV shows 0 MW commissioned as of 31-08-2025. RWE here = ReNew Wind Energy, not the German RWE.",WR,Wind
+AXPPL_FTG3,,,unknown,,unidentified,unknown,https://ctuil.in/uploads/assets/174177746339Approved_Connectivity%20to%20be%20made%20effective_301224_statewise.pdf,none,"Web-checked 26-Oct-2026. No source found for 'AXPPL'. Possible candidate at Fatehgarh-III in the CTUIL connectivity list (as on 31-12-2024): XL Xergi Power Pvt Ltd, solar, 200 MW + 200 MW (400 MW). The name match is weak, so not reported as a capacity.",NR,Solar
+ARE56L_PSS4_KPS1_S,,,unknown,,"Adani Renewable Energy Fifty Six Ltd solar, Khavda",Adani Green Energy (Adani Renewable Energy Fifty Six Ltd),https://powerline.net.in/2025/09/03/agel-commissions-125-mw-solar-project-at-khavda/,low,"Web-checked 26-Oct-2026. SPV confirmed as Khavda solar. Commissioning reported in tranches: 50 MW (15-May-2025), 125 MW (1-Sep-2025), 87.5 MW (~30-Sep-2025), i.e. at least 262.5 MW. That is below max_scheduled 277.9, so there are other tranches not captured. Total for the PSS4 connection not confirmed.",WR,Solar
+CSP_Bhadla,,300.0,unknown,,Hero Future Energies Bhadla Phase-III 300 MW SECI solar,"Hero Future Energies (Clean Solar Power SPV, inferred)",https://mercomindia.com/world-largest-solar-park-bhadla/,medium,"Web-checked 26-Oct-2026. HFE won 300 MW in the Dec-2017 SECI Bhadla Phase-III auction (Rs 2.47) and commissioned it (~Apr-2020 per GlobalData). CSP = Clean Solar Power (HFE step-down SPV) is inferred. Caveat: one article mentions 'Clean Solar Power (Jodhpur)' with a 250 MW Bhadla farm, which may be a different HFE SPV.",NR,Solar
+Anp_SprngAgnitra,,250.0,AC,,"Sprng Agnitra 250 MW, NP Kunta (Ananthapuramu) Ultra Mega Solar Park",Sprng Energy (Sprng Agnitra Pvt Ltd),https://en.wikipedia.org/wiki/NP_Kunta_Ultra_Mega_Solar_Park,high,"Web-checked 26-Oct-2026. Listed as Sprng Agnitra 250 MW commissioned at NP Kunta. Sprng CEO described it as 250 MWac / 385 MWdc (pv-magazine-india, Siemens Gamesa EPC). NTPC PPA Rs 2.72.",SR,Solar
+SUPL_FTG2,,,unknown,,unidentified,unknown,,none,"Web-checked 26-Oct-2026. No source found for 'SUPL' at Fatehgarh-II. 300 MW solar plants near Fatehgarh include ReNew Sun Bright (300 MW, COD Nov-2021, now Sembcorp) and Avaada Surya Power (300 MW, under construction). Neither matches the code.",NR,Solar
+PVG_ADYAH,,,unknown,,"Adyah Solar Energy, Pavagada (unverified)",unknown,,none,"Web-checked 26-Oct-2026. No web source names Adyah Solar Energy with a capacity. The hint that it is Adani-owned is unverified. Pavagada has several 300 MW blocks (Ayana, ReNew, JSW, Avaada); none tied to Adyah.",SR,Solar
+JREPL_BKN2,,335.0,AC,,"Juna Renewable Energy 335 MW AC solar, Kawani village, Bikaner",Acciona Energia (Juna Renewable Energy Pvt Ltd),https://powerline.net.in/2024/07/31/waaree-energies-secures-module-supply-contract-for-juna-renewables-412-5-mwp-project-in-rajasthan/,high,"Web-checked 26-Oct-2026. 412.5 MWp / 335 MW AC on single-axis trackers. CTUIL connectivity list (31-12-2024) shows Juna Renewable Energy Pvt Ltd at Bikaner-II PS with 290 + 45 = 335 MW, exactly matching max_scheduled 335.",NR,Solar
+AP41PL_BHDL,,300.0,unknown,,"Azure Power 'Rajasthan 8' 300 MW SECI ISTS solar, Bhadla","Azure Power (Azure Power Forty One Pvt Ltd, inferred)",https://investors.azurepower.com/press-releases/2022/03-14-2022-103023632.html,medium,"Web-checked 26-Oct-2026. Azure fully commissioned the 300 MW SECI ISTS project 'Rajasthan 8' at Bhadla in Mar-2022 (Rs 2.58). AP41PL = Azure Power Forty One is inferred from the code; no source links the SPV name to this project. Azure also has other Bhadla capacity (a 200 MW 2019 plant, and connectivity at Bhadla-II).",NR,Solar
+Tuticorin_NTPCETPRM,,230.0,unknown,,NTPC Ettayapuram 230 MW solar PV,NTPC,https://renewablewatch.in/2022/12/12/ntpc-commissions-230-mw-solar-capacity-in-ettayapuram-tamil-nadu/,high,Web-checked 26-Oct-2026. COD 162.27 MW on 10-Dec-2022 and 67.73 MW on 15-Dec-2022 (230 MW). Evacuated to PGCIL Tuticorin-II GIS via 230 kV line; power supplied to Telangana discoms.,SR,Solar
+ARP3PL_BKN,,300.0,unknown,,"Ayana Renewable Power Three 300 MW solar, Bikaner",Ayana Renewable Power (Ayana Renewable Power Three Pvt Ltd),https://solarquarter.com/2021/12/31/ayana-renewable-commissions-300-mw-solar-project-in-rajasthan/,high,"Web-checked 26-Oct-2026. CTUIL connectivity list (31-12-2024) names 'Ayana Renewable Power Three Private Limited', Bikaner PS, solar, 300 MW. Ayana commissioned its 300 MW Bikaner solar project on 22-Dec-2021. ARP3PL = Ayana Renewable Power Three (not Adani/ACME).",NR,Solar
+ANP_AdaniAPSeven,,,AC,,Ananthapuram (Adani) solar farm,Adani Green Energy,https://www.gem.wiki/Ananthpuram_(Adani)_solar_farm,low,"Web-checked 26-Oct-2026. Web lead, low confidence: 250 MW. Global Energy Monitor lists an operating Adani-owned 250 MWac solar farm at Ananthapuramu (2020). No source names an 'AP Seven' SPV, so the match is by developer, location and capacity only (fits max_scheduled 243.8).",SR,Solar
+AWEK4L_DEDYA_BHUJ2_W,,300.0,AC,,"Adani Wind Energy Kutchh Four merchant wind, Gujarat",Adani Green Energy (Adani Wind Energy Kutchh Four Ltd),https://bseindia.com/xml-data/corpfiling/AttachHis/79731d28-a077-4719-9d37-e3628f8156b1.pdf,high,"Web-checked 26-Oct-2026. AGEL exchange filing (14-Mar-2024): AWEK4L operationalised 126 MW more merchant wind, 300 MW in total with the earlier 174 MW. The SPV's original SECI Tranche-V 6x50 MW award is shown as terminated in SECI's wind status sheet, so this is merchant capacity.",WR,Wind
+AvSusRJPPL_BKN,,300.0,AC,,"Avaada 300 MWac solar, Noorsar village, Bikaner",Avaada (Avaada Sustainable RJ Project Pvt Ltd),https://projects.globalcarboncouncil.com/project/88,high,"Web-checked 26-Oct-2026. Global Carbon Council registry names Avaada Sustainable RJ Project Pvt Ltd as owner of a 300 MWac solar plant at Noorsar, Bikaner. GEM lists a 300 MW Avaada Bikaner plant commissioned in 2022.",NR,Solar
+ACL_BHDL,,,unknown,,unidentified,unknown,,none,"Web-checked 26-Oct-2026. No source found linking 'ACL' to a ~300 MW Bhadla plant. ACME won 200 MW in Bhadla Phase-III, which does not fit max_scheduled 299.2; ACME Chittorgarh link unconfirmed.",NR,Solar
+RSRPL_FTG3,,400.0,AC,,"ReNew Surya Roshni 400 MW solar, Fatehgarh-III",ReNew (ReNew Surya Roshni Pvt Ltd),https://ctuil.in/uploads/assets/174177746339Approved_Connectivity%20to%20be%20made%20effective_301224_statewise.pdf,medium,"Web-checked 26-Oct-2026. CTUIL list (31-12-2024): Renew Surya Roshni Pvt Ltd, Fatehgarh-III PS, solar, 400 MW connectivity + 400 MW LTA, expected 31-03-2025. 400 MW is the grid-connectivity figure (AC export limit), not a published nameplate. It matches max_scheduled 400.",NR,Solar
+TPREL,,,unknown,,unidentified Tata Power Renewable Energy plant (NR),Tata Power Renewable Energy Ltd,,none,"Web-checked 26-Oct-2026. Code too generic. TPREL built a 300 MW AC / 450 MWp DCR solar plant at Karnisar Bhatiyan (Bikaner, Nov-2025), but as EPC contractor for NHPC, so it is probably scheduled under NHPC's name. Not assigned.",NR,Solar
+ARP1PL_BKN,,,,,,,,,,NR,Solar
+RSEJ3PL_FTG2,,,,,,,,,,NR,Solar
+SBE6PL,,,,,,,,,,NR,Solar
+Kurnool_AMGreen_W,,,,,,,,,,SR,Hybrid - wind part
+RSUPL_FTG2,,,,,,,,,,NR,Solar
+KOPPAL_SRI1PL_S,,,,,,,,,,SR,Hybrid - solar part
+AlfanarWind_SECI_III,,,,,,,,,,WR,Wind
+APRAAVA_KHKRDA_JAM_W,,,,,,,,,,WR,Wind
+PVG_FortumSolar,,,,,,,,,,SR,Solar
+MASAYA_BWSPRA_KNDW_S,,,,,,,,,,WR,Solar
+NLCTS2EXP,,,,,,,,,,SR,Conventional (thermal / hydro)
+ESPL_RSP,,,,,,,,,,WR,Solar
+KOPPAL_AyanaSix_W,,,,,,,,,,SR,Wind
+CSPJPL_BHDL,,,,,,,,,,NR,Solar
+MSUPL_BHDL2,,,,,,,,,,NR,Solar
+HIRIYUR_OSTROKANNADA,,,,,,,,,,SR,Wind
+RSBPL_FTG2,,,,,,,,,,NR,Solar
+MSRPL_BHDL,,,,,,,,,,NR,Solar
+KOPPAL_RenewOjas_W,,,,,,,,,,SR,Hybrid - wind part
+KARUR_JSWRENEW_W,,,,,,,,,,SR,Wind
+RSRPL_BKN,,,,,,,,,,NR,Solar
+OKWPL_RE,,,,,,,,,,WR,Wind
+TS1PL_BKN,,,,,,,,,,NR,Solar
+RSAPL_FTG3,,,,,,,,,,NR,Solar
+GIWEL_SECI_II_RE,,,,,,,,,,WR,Wind
+RSPPL_BKN,,,,,,,,,,NR,Solar
+DHARIWAL_ISTS,,,,,,,,,,WR,Conventional (thermal / hydro)
+AvRJHNPL_BKN,,,,,,,,,,NR,Solar
+AWEMP1PL_PTNGR_IDR_W,,,,,,,,,,WR,Wind
+Tuticorin_BETAMWIND,,,,,,,,,,SR,Wind
+ARE55L_PSS3_KPS1_S,,,,,,,,,,WR,Solar
+Arinsun_RUMS,,,,,,,,,,WR,Solar
+ACSEPL_BHADLA,,,,,,,,,,NR,Solar
+ACL_PSS3_KPS1_S,,,,,,,,,,WR,Solar
+APSEZ_PSS3_KPS1_S,,,,,,,,,,WR,Solar
+GIWEL_SECI_III_RE,,,,,,,,,,WR,Wind
+Tuticorin_GIREL,,,,,,,,,,SR,Wind
+Athena_RUMS,,,,,,,,,,WR,Solar
+DSNTPC_FTG2,,,,,,,,,,NR,Solar
+KOPPAL_TPSAURYA_S,,,,,,,,,,SR,Solar
+RPL_SECI_II_RE,,,,,,,,,,WR,Wind
+Tuticorin_Mytrah,,,,,,,,,,SR,Wind
+PVG_AdaniKANine,,,,,,,,,,SR,Solar
+MSRPL_REWA_RUMS_S,,,,,,,,,,WR,Solar
+KOPPAL_RenewRoshni_W,,,,,,,,,,SR,Wind
+LKPLPHASE2,,,,,,,,,,SR,Conventional (thermal / hydro)
+GADAG_RSPPL_W,,,,,,,,,,SR,Wind
+JSPL_DCPP,,,,,,,,,,WR,Conventional (thermal / hydro)
+ASEB1L_FTG3,,,,,,,,,,NR,Solar
+RSEKPL_BHDL2,,,,,,,,,,NR,Solar
+KOLDAM,,,,,,,,,,NR,Conventional (thermal / hydro)
+NOKHRANT_BHDL2,,,,,,,,,,NR,Solar
+ASERJ2PL_FTG2,,,,,,,,,,NR,Solar
+TPGEL_BKN,,,,,,,,,,NR,Solar
+AVAADA_AGAR_RUMS_S,,,,,,,,,,WR,Solar
+Tuticorin_GRTJIPL,,,,,,,,,,SR,Solar
+ANP_NTPC,,,,,,,,,,SR,Solar
+ARERJL,,,,,,,,,,NR,Solar
+AREH4L_PSS1_KPS1_SF,,,,,,,,,,WR,Solar
+NETRA_KOTDA_BHUJ_W,,,,,,,,,,WR,Wind
+APMPL_BHDL,,,,,,,,,,NR,Solar
+NTPC_REL_SJPR_RUMS_S,,,,,,,,,,WR,Solar
+RGMHS3_PSS5_SLPR_S,,,,,,,,,,WR,Solar
+SBEFPL_Bhadla,,,,,,,,,,NR,Solar
+KARUR_TPVARDHAMAN_W,,,,,,,,,,SR,Wind
+Tuticorin_Orange,,,,,,,,,,SR,Wind
+TPSOURY_KWAI_NMCH_S,,,,,,,,,,WR,Solar
+GADAG_Serentica3_W,,,,,,,,,,SR,Hybrid - wind part
+Tuticorin_JSWRETwo,,,,,,,,,,SR,Wind
+APIPL,,,,,,,,,,NR,Solar
+SRI4PL_BKN2,,,,,,,,,,NR,Solar
+TPSOURY_BRVD_NMCH_S,,,,,,,,,,WR,Solar
+ARE41L_PSS8_KPS3_W,,,,,,,,,,WR,Wind
+PVG_PARAMPUJYA,,,,,,,,,,SR,Solar
+PVG_AVAADASOLAR,,,,,,,,,,SR,Solar
+PVG_AvaadaSolarise,,,,,,,,,,SR,Solar
+RSPPL_FTG3,,,,,,,,,,NR,Solar
+KOPILI,,,,,,,,,,NER,Conventional (thermal / hydro)
+AGTCCPP,,,,,,,,,,NER,Conventional (thermal / hydro)
+ASERJ2PL_BHDL,,,,,,,,,,NR,Solar
+ASEJ2PL_BKN,,,,,,,,,,NR,Solar
+JHABUA_IPP,,,,,,,,,,WR,Conventional (thermal / hydro)
+KARUR_JSWRETwo_W,,,,,,,,,,SR,Wind
+DHARIWAL_STU_OTHER,,,,,,,,,,WR,Conventional (thermal / hydro)
+AGE25AL_PSS2_KPS1_S,,,,,,,,,,WR,Solar
+CHAMERA1,,,,,,,,,,NR,Conventional (thermal / hydro)
+JGSPL_S_FTG4,,,,,,,,,,NR,Hybrid - solar part
+RDUPL_BKN2,,,,,,,,,,NR,Solar
+ASPPL_BESS_BHDL2,,,unknown,,unidentified standalone BESS at Bhadla-II,unknown,,none,Web-checked 26-Oct-2026. Not resolved; no commissioning report for a ~300 MW BESS at Bhadla-II found.,NR,BESS (standalone)
+NLCIIST1,,,,,,,,,,SR,Conventional (thermal / hydro)
+LOKTAK,,,,,,,,,,NER,Conventional (thermal / hydro)
+SRI9PL_FTG3,,,,,,,,,,NR,Solar
+ASRYD_BESS_FTG1,,,unknown,,unidentified standalone BESS at Fatehgarh-I,unknown,,none,"Web-checked 26-Oct-2026. Not resolved. Only related lead: Juniper Green reported 400 MWh BESS installed at Fatehgarh (not confirmed commissioned, and code does not match Juniper).",NR,BESS (standalone)
+Torrent_Sidpur_Jam_W,,,,,,,,,,WR,Wind
+SRIJAN_MORJAR_BHJ2_W,,,,,,,,,,WR,Wind
+APTFPL_Bhadla,,,,,,,,,,NR,Solar
+AWEKFL,,,,,,,,,,WR,Wind
+SGEL_RSP_S,,,,,,,,,,WR,Solar
+TALTUTAI_SJPR_RUMS_S,,,,,,,,,,WR,Solar
+ACBIL,,,,,,,,,,WR,Conventional (thermal / hydro)
+ASEJ2PLP2_BKN,,,,,,,,,,NR,Solar
+XXPPL_FTG3,,,,,,,,,,NR,Solar
+NJPC,,,,,,,,,,NR,Conventional (thermal / hydro)
+ABCRJ02_FTG3,,,,,,,,,,NR,Solar
+NTPC_REL_DYPR_BHUJ_W,,,,,,,,,,WR,Wind
+PVG_AzurePowerEarth,,,,,,,,,,SR,Solar
+GIPCL_RSP,,,,,,,,,,WR,Solar
+ACL_PSS4_KPS1_W,,,,,,,,,,WR,Wind
+TPREL_RSP,,,,,,,,,,WR,Solar
+ARTPL_BKN2,,,,,,,,,,NR,Solar
+RenewGreenTN3_SLPR_S,,,,,,,,,,WR,Solar
+AHEJ4L_W_FTG1,,,,,,,,,,NR,Hybrid - wind part
+GSPL_BHDL2,,,,,,,,,,NR,Solar
+PVG_FORTUMFINSURYA,,,,,,,,,,SR,Solar
+KREPL_BKN2,,,,,,,,,,NR,Solar
+RGMHS1_TLJPR_SLPR_HW,,,unknown,,"unidentified ReNew Green (MHS One) hybrid, Tuljapur/Solapur, wind component",ReNew (unverified),,none,"Web-checked 26-Oct-2026. No source found for 'ReNew Green (MHS One)' or a ReNew hybrid at Tuljapur. A similarly named 'ReNew Green MHH One' is a captive solar SPV, not matched.",WR,Hybrid - wind part
+ERAPL_BHDL2,,,,,,,,,,NR,Solar
+TPSL_BKN2,,,,,,,,,,NR,Solar
+AEGFPL_BHDL2,,,,,,,,,,NR,Solar
+NTPCREL1_SJPR_RUMS_S,,,,,,,,,,WR,Solar
+TEHRI,,,,,,,,,,NR,Conventional (thermal / hydro)
+ANP_TATARENEWABLE,,,,,,,,,,SR,Solar
+TPSL_BKN,,,,,,,,,,NR,Solar
+ARE56L_PSS9_KPS1_S,,,,,,,,,,WR,Solar
+CPTTNPL,,,,,,,,,,WR,Wind
+SRI5PL_BKN2,,,,,,,,,,NR,Solar
+HRPGP_BHDL3,,,,,,,,,,NR,Solar
+IBVS7PL_FTG3,,,,,,,,,,NR,Solar
+KOPPAL_Kleio_S,,,,,,,,,,SR,Hybrid - solar part
+RenewGreen_SLPR_HS,,,unknown,,"unidentified ReNew Green hybrid, Solapur","ReNew (ReNew Green SPV, unverified)",,none,"Web-checked 26-Oct-2026. No source found for a ReNew wind-solar hybrid at Solapur with capacity. The only Solapur hybrid found is Juniper Green Spark Ten (108 MWp solar + 25 MW wind, MSEDCL), which is not ReNew.",WR,Hybrid - solar part
+JGCPL_BKN2,,,,,,,,,,NR,Solar
+RSS5PL_FTG3,,,,,,,,,,NR,Solar
+RGMHP1_Patoda_klm_W,,,,,,,,,,WR,Wind
+KOPPAL_Kleio_W,,,,,,,,,,SR,Hybrid - wind part
+BlueLeaf_CP_PCHR_HW,,,unknown,,"Blueleaf Energy Pachora 300 MWp wind-solar hybrid, wind component",Blueleaf Energy (Macquarie),https://powerline.net.in/2026/03/31/blueleaf-energy-commissions-300-mwp-wind-solar-hybrid-project-in-madhya-pradesh/,low,"Web-checked 26-Oct-2026. Commissioned Mar-2026: 300 MWp hybrid with 35 wind turbines plus multi-site solar, connected at Pachora ISTS substation (Madhya Pradesh, so PCHR = Pachora PS MP, not Pachora in Maharashtra). The wind component MW is not stated (35 WTGs; ~115 MW would mean ~3.3 MW each, which is inference only). Financial close was earlier reported for 200 MW. BlueLeaf = Blueleaf Energy, not BluPine.",WR,Hybrid - wind part
+RSSPL_FTG3,,,,,,,,,,NR,Solar
+GADAG_VENA_W,,,,,,,,,,SR,Hybrid - wind part
+AAPL_BKN2,,,,,,,,,,NR,Solar
+RSVPL_FTG3,,,,,,,,,,NR,Solar
+PR16PL_BHDL2,,,,,,,,,,NR,Solar
+GEPL_BKN2,,,,,,,,,,NR,Solar
+OVEPL_BKN2,,,,,,,,,,NR,Solar
+NTPCRGDMFSP,,,,,,,,,,SR,Solar
+GSECL_ph2_RSP_S,,,,,,,,,,WR,Solar
+RSRPL_GHTND_klm_W,,,,,,,,,,WR,Wind
+RSS3PL_FTG3,,,,,,,,,,NR,Solar
+KARNATAKA_STATE,,,,,,,,,,SR,State control area
+BSIUL,,,,,,,,,,NR,Conventional (thermal / hydro)
+ARE41L_PSS3_KPS1_W,,,,,,,,,,WR,Wind
+RSJPL_FTG3,,,,,,,,,,NR,Solar
+NRSVPL_FTG3,,,,,,,,,,NR,Solar
+KHRPL_FTG3,,,,,,,,,,NR,Solar
+CMCPL_BKN2,,,,,,,,,,NR,Solar
+ASURY_BESS_BKN2,,,unknown,,unidentified standalone BESS at Bikaner-II,unknown,,none,"Web-checked 26-Oct-2026. Not resolved. ACME Solar commissioned 53.63 MW / 300 MWh BESS at Kelan village, Bikaner (FDRE Phase I, Sep-2026), but that is far below max_scheduled 279 MW and the code does not obviously match.",NR,BESS (standalone)
+AGE26BL_PSS10_KPS1_W,,,,,,,,,,WR,Hybrid - wind part
+TSESPL_BKN2,,,,,,,,,,NR,Solar
+AGE26BL_PSS2_KPS1_S,,,,,,,,,,WR,Solar
+AGE25BL_RMGRH,,,,,,,,,,NR,Solar
+SRI8PL_FTG3,,,,,,,,,,NR,Solar
+SEWA2,,,,,,,,,,NR,Conventional (thermal / hydro)
+CHAMERA3,,,,,,,,,,NR,Conventional (thermal / hydro)
+TESPL_BKN2,,,,,,,,,,NR,Solar
+ASIPL_BARANDA,Unclear,,unknown,,unidentified,unknown,,none,"Schedule runs day and night at low output (looks like wind), but the web search could not identify the plant. Web-checked 26-Oct-2026. No RE plant called Baranda with an 'ASIPL' owner found in WR. The only 'Baranda' plant found is a cancelled JSW coal project in Jharkhand, which is irrelevant. Technology not identified; cannot confirm the wind guess.",WR,Wind
+ASEJOPL_W_FTG2,,,,,,,,,,NR,Hybrid - wind part
+JGCPL_BESS_BKN2,,,AC,201.28,"Juniper Green Cosmic merchant BESS, Bikaner Phase II",Juniper Green Energy (Juniper Green Cosmic Pvt Ltd),https://renewablewatch.in/2026/09/30/juniper-green-commissions-100-64-mwh-bess-in-rajasthan/,medium,"Web-checked 26-Oct-2026. JGCPL = Juniper Green Cosmic Pvt Ltd (also holds 100 MW solar connectivity at Bikaner-II PS per CTUIL). Commissioned ~100 MWh merchant BESS (60 MWh Dec-2025 + 40 MWh Jan-2026), then 100.64 MWh more in Sep-2026, total 201.28 MWh. Power MW not found in the sources read.",NR,BESS (standalone)
+AEG08_S_FTG4,,,,,,,,,,NR,Hybrid - solar part
+AHEJOL_W_FTG2,,,,,,,,,,NR,Hybrid - wind part
+EPPL_FTG3,,,,,,,,,,NR,Solar
+TGEPL_BKN2,,,,,,,,,,NR,Solar
+AEGSPL_BHDL2,,,,,,,,,,NR,Solar
+TSESOPL_BKN2,,,,,,,,,,NR,Solar
+ARE41L_PSS13_KPS1_W,,,,,,,,,,WR,Wind
+DHAULIGNGA,,,,,,,,,,NR,Conventional (thermal / hydro)
+AEG4PL_BHDL2,,,,,,,,,,NR,Solar
+PR11PL_BHDL2,,,,,,,,,,NR,Solar
+RAMPUR,,,,,,,,,,NR,Conventional (thermal / hydro)
+RSS1PL_BHDL3,,,,,,,,,,NR,Solar
+RSS11PL_BHDL3,,,,,,,,,,NR,Solar
+AEG10_S_FTG4,,,,,,,,,,NR,Hybrid - solar part
+AGE25BL_PSS9_KPS1_HW,,,unknown,,"Adani Green Energy Twenty Five B hybrid, Khavda, wind component",Adani Green Energy (Adani Green Energy Twenty Five B Ltd),https://www.pv-magazine-india.com/2025/10/03/adani-green-reaches-16-7-gw-of-operating-renewable-capacity,low,"Web-checked 26-Oct-2026. SPV confirmed as a Khavda hybrid. The only reported figures are a 25 MW hybrid tranche (~30-Sep-2025) and a 25 MW solar + 20.8 MW wind unit for Asahi India Glass captive supply. These are far below max_scheduled 131 MW for the wind part, so the full SPV capacity is not found.",WR,Hybrid - wind part
+TCSPL_BKN2,,,,,,,,,,NR,Solar
+AGE24L_PSS4_KPS1_W,,,,,,,,,,WR,Wind
+CMEESL_BKN2,,,,,,,,,,NR,Solar
+GSECL_RSP,,,,,,,,,,WR,Solar
+KBNHPC_BKN2,,,,,,,,,,NR,Solar
+AGE25BL_PSS9_KPS1_HS,,,unknown,,"Adani Green Energy Twenty Five B hybrid, Khavda, solar component",Adani Green Energy (Adani Green Energy Twenty Five B Ltd),https://www.pv-magazine.com/2026/01/13/adani-green-unit-to-supply-solar-wind-power-to-asahi-india-glass/,low,"Web-checked 26-Oct-2026. Reported: 25 MW hybrid tranche (Sep-2025), and a 25 MW solar unit + 20.8 MW wind unit at Khavda for Asahi India Glass. Max_scheduled solar part is 66 MW, so other tranches exist; total not found.",WR,Hybrid - solar part
+SRI26PL_FTG3,,,,,,,,,,NR,Solar
+KTPREL_S_BKN3,,,,,,,,,,NR,Solar
+CHAMERA2,,,,,,,,,,NR,Conventional (thermal / hydro)
+SCLTPS,,,,,,,,,,NR,Conventional (thermal / hydro)
+AMNSIL_WR_State,,,,,,,,,,WR,State control area
